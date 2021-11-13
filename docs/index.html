@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
-        
-        
+        <meta name="description" content="Django GDPR Cookie Consent documentation">
+        <meta name="author" content="Aidas Bendoraitis a.k.a. archatas / DjangoTricks">
+        <link rel="canonical" href="https://archatas.github.io/django-gdpr-cookie-consent-docs/">
         <link rel="shortcut icon" href="img/favicon.ico">
         <title>Django GDPR Cookie Consent</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,9 +24,42 @@
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href=".">Django GDPR Cookie Consent</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
                 <!-- Expanded navigation -->
                 <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem active">
+                                <a href="." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="getting-started/" class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="customization/" class="nav-link">Customization</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="cookie-consent-settings/" class="dropdown-item">Settings Example</a>
+</li>
+                                    
+<li>
+    <a href="changelog/" class="dropdown-item">Changelog</a>
+</li>
+                                    
+<li>
+    <a href="license/" class="dropdown-item">License</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
 
                     <ul class="nav navbar-nav ml-auto">
                         <li class="nav-item">
@@ -34,6 +67,19 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="getting-started/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://websightful.gumroad.com/l/django-gdpr-cookie-consent" class="nav-link">Buy Now!</a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -54,19 +100,23 @@
             
             <li class="nav-item" data-level="1"><a href="#django-gdpr-cookie-consent" class="nav-link">Django GDPR Cookie Consent</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+            <li class="nav-item" data-level="2"><a href="#why-do-you-need-it" class="nav-link">Why do you need it?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#who-is-it-for" class="nav-link">Who is it for?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#what-are-the-benefits" class="nav-link">What are the benefits?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#how-does-it-work" class="nav-link">How does it work?</a>
               <ul class="nav flex-column">
               </ul>
             </li>
             <li class="nav-item" data-level="2"><a href="#examples" class="nav-link">Examples</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-to-install" class="nav-link">How to Install</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#how-to-use" class="nav-link">How to Use</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -86,8 +136,76 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="django-gdpr-cookie-consent">Django GDPR Cookie Consent</h1>
-<h2 id="description">Description</h2>
+<h2 id="why-do-you-need-it">Why do you need it?</h2>
 <p>As stated by <a href="https://gdpr.eu/cookies/">GDPR cookie law</a>, websites that serve content for people from European Union must get consent from website visitors before storing any cookies that are not strictly necessary for the website to function. Not complying with GDPR laws can result in a fine of up to €20 million or 4% of the company's annual revenue, whichever is greater.</p>
+<h2 id="who-is-it-for">Who is it for?</h2>
+<p>Django GDPR Cookie Consent app was created for Django developers who need to integrate a Cookie Consent dialog in their Django projects. The existing open-source Django alternatives at the time of writing were not fully compliant or not feature complete. In addition, the current external services were costly and not customizable enough.</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Supported modern browsers</td>
+<td>Chrome, Firefox, Safari, Opera, Microsoft Edge</td>
+</tr>
+<tr>
+<td>Supported Django versions</td>
+<td>2.2, 3.0, 3.1, 3.2</td>
+</tr>
+<tr>
+<td>Supported Python versions</td>
+<td>3.5, 3.6, 3.7, 3.8</td>
+</tr>
+<tr>
+<td>Responsive layout</td>
+<td>✔︎</td>
+</tr>
+<tr>
+<td>Translatable</td>
+<td>✔︎</td>
+</tr>
+<tr>
+<td>Configurable</td>
+<td>✔︎</td>
+</tr>
+<tr>
+<td>Unlimited websites</td>
+<td>✔︎</td>
+</tr>
+<tr>
+<td>Continuous cookie consent logs</td>
+<td>✔︎</td>
+</tr>
+<tr>
+<td>Latest package version</td>
+<td>0.3.1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-are-the-benefits">What are the benefits?</h2>
+<p>There are lots of benefits:</p>
+<ul>
+<li>Saves at least a week of development work.</li>
+<li>Highly flexible and configurable.</li>
+<li>Can be used for as many Django websites as necessary.</li>
+<li>No external dependencies, just Django&gt;=2.2, Python 3, and plain modern JavaScript.</li>
+<li>Comes with pretty nice-looking default styling and a responsive layout.</li>
+<li>Typography and buttons will match your website's style (no iframes used).</li>
+<li>All functionality can be extended, overwritten, or replaced.</li>
+<li>Uses configuration in Django settings and templates.</li>
+<li>No need to modify or adapt scripts from third parties (most of the time).</li>
+<li>Logs the cookie consent choices from visitors into the database for legal compliance.</li>
+<li>Developed with internationalization in mind.</li>
+<li>Compatible with Content-Security-Policy via Django-CSP.</li>
+<li>MIT license applied.</li>
+<li>No recurring subscriptions, no limitation per domain, just a single payment.</li>
+<li>Designed and implemented by the author of "Web development with Django Cookbook."</li>
+</ul>
+<h2 id="how-does-it-work">How does it work?</h2>
 <p>Django GDPR Cookie Consent app allows you to set up a modal dialog for cookie explanations and preferences. When a specific cookie section is accepted, the widget loads or renders HTML snippets related to that section. For example, if a visitor approved Performance cookies, they would get Google Analytics loaded.</p>
 <p>Using the Django GDPR Cookie Consent app, you store the following information about the cookies in Django project settings:</p>
 <ul>
@@ -97,446 +215,18 @@
 </ul>
 <p>Descriptions for sections, providers, or cookies are translatable. User preferences are saved in a cookie too. If a particular section is unselected later, cookies related to that section are attempted to get deleted.</p>
 <h2 id="examples">Examples</h2>
-<p>Django GDPR Cookie Consent is used at</p>
+<p>Here are the recorded <a href="https://github.com/archatas/django-gdpr-cookie-consent-demo-project">Selenium tests</a> for a visual preview:</p>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nSCdNCHQKUY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<p>Django GDPR Cookie Consent is used in production at these websites:</p>
 <ul>
 <li><a href="https://www.1st-things-1st.com">1st things 1st</a></li>
 <li><a href="https://www.djangotricks.com">DjangoTricks</a></li>
 </ul>
-<h2 id="how-to-install">How to Install</h2>
-<h3 id="1-download-and-install-the-package-with-pip">1. Download and install the package with pip</h3>
-<p><a href="https://websightful.gumroad.com/l/django-gdpr-cookie-consent">Get Django GDPR Cookie Consent from Gumroad</a>.</p>
-<p>Install it into your Django project's virtual environment:</p>
-<pre><code class="language-shell">(venv)$ pip install /path/to/django_gdpr_cookie_consent-0.3.1-py2.py3-none-any.whl
-</code></pre>
-<p>You might as well add the wheel file in your project's repository and link to it in your <code>requirements.txt</code>:</p>
-<pre><code>Django==3.2
-private_wheels/django_gdpr_cookie_consent-0.3.1-py2.py3-none-any.whl
-</code></pre>
-<h3 id="2-add-the-app-to-installed_apps-of-your-project-settings">2. Add the app to INSTALLED_APPS of your project settings</h3>
-<pre><code class="language-python">INSTALLED_APPS = [
-    # …
-    &quot;gdpr_cookie_consent.apps.GdprCookieConsentConfig&quot;,
-    # …
-]
-</code></pre>
-<h3 id="3-add-path-to-urlpatterns">3. Add path to urlpatterns</h3>
-<pre><code class="language-python">from django.urls import path, include
-
-urlpatterns = [
-    # …
-    path(
-        &quot;cookies/&quot;,
-        include(&quot;gdpr_cookie_consent.urls&quot;, namespace=&quot;cookie_consent&quot;),
-    ),
-    # …
-]
-</code></pre>
-<h3 id="4-include-the-widget-to-your-templates">4. Include the widget to your template(s)</h3>
-<p>Load the CSS somewhere in the <code>&lt;head&gt;</code> section:</p>
-<pre><code class="language-html">&lt;link href=&quot;{% static 'gdpr-cookie-consent/css/gdpr-cookie-consent.css' %}&quot; rel=&quot;stylesheet&quot; /&gt;
-</code></pre>
-<p>Include the widget just before the closing <code>&lt;/body&gt;</code> tag:</p>
-<pre><code class="language-html">{% include &quot;gdpr_cookie_consent/includes/cookie_consent.html&quot; %}
-</code></pre>
-<p>Link to the cookie management view, for example, in the website's footer:</p>
-<pre><code class="language-html">{% url &quot;cookie_consent:cookies_management&quot; as cookie_management_url %}
-&lt;a href=&quot;{{ cookie_management_url }}&quot; rel=&quot;nofollow&quot;&gt;
-    {% trans &quot;Manage Cookies&quot; %}
-&lt;/a&gt;
-</code></pre>
-<h3 id="5-optional-add-a-context-processor-to-your-project-settings">5. Optional: add a context processor to your project settings</h3>
-<p>If you want to access cookie configuration from any template, add a context processor to your project settings:</p>
-<pre><code class="language-python">TEMPLATES = [
-    {
-        # …
-        &quot;OPTIONS&quot;: {
-            &quot;context_processors&quot;: [
-                # …
-                &quot;gdpr_cookie_consent.context_processors.gdpr_cookie_consent&quot;,
-            ],
-        },
-    },
-]
-
-</code></pre>
-<h2 id="how-to-use">How to Use</h2>
-<h3 id="6-copy-paste-and-modify-the-cookie-consent-configuration">6. Copy, paste, and modify the cookie consent configuration</h3>
-<p>Add this to the end of your project settings, then modify it to match the cookie usage of your website:</p>
-<pre><code class="language-python">_ = lambda text: text
-
-COOKIE_CONSENT_SETTINGS = {
-    # Base template will be used for the cookie management view.
-    # It should contain {% block content %}{% endblock %}
-    &quot;base_template_name&quot;: &quot;base.html&quot;,
-
-    # Description will be used in the modal dialog and cookie management view.
-    # Provide either a translatable string or a HTML template name.
-    &quot;description&quot;: _(&quot;&quot;),
-    &quot;description_template_name&quot;: &quot;gdpr_cookie_consent/descriptions/what_are_cookies.html&quot;,
-
-    # Extra information will be used at the end of cookie management view.
-    # Provide either a translatable string or a HTML template name.
-    &quot;extra_information&quot;: _(&quot;&quot;),
-    &quot;extra_information_template_name&quot;: &quot;gdpr_cookie_consent/descriptions/extra.html&quot;,
-
-    # All important elements will have CSS classes with `cc-` prefix,
-    # by which you can target them and overwrite their styling.
-    # But you can attach some CSS classes to certain elements too.
-    &quot;styling&quot;: {
-        &quot;primary_button_css_classes&quot;: &quot;&quot;,
-        &quot;secondary_button_css_classes&quot;: &quot;&quot;,
-        &quot;provider_list_css_classes&quot;: &quot;&quot;,
-        &quot;provider_item_css_classes&quot;: &quot;&quot;,
-        &quot;link_css_classes&quot;: &quot;&quot;,
-        &quot;section_anchor_css_classes&quot;: &quot;&quot;,
-    },
-    # Any variables that will be passed to conditional HTML snippets
-    &quot;extra_context&quot;: {
-        &quot;API_KEY_1&quot;: &quot;abcdefg12345&quot;,
-        &quot;API_KEY_2&quot;: &quot;12345abcdefg&quot;,
-    },
-
-    # Consent cookie max age say how many seconds to keep the cookie consent preferences.
-    # For example, it can be approximately six months
-    &quot;consent_cookie_max_age&quot;: 60 * 60 * 24 * 30 * 6,
-
-    # Sections define the purposes of cookie groups.
-    # For example: Essential, Functionality, Performance, and Marketing
-    &quot;sections&quot;: [
-        {
-            # The slug will be used as a readable identifier of the section
-            &quot;slug&quot;: &quot;essential&quot;,
-
-            # Translatable title of the section
-            &quot;title&quot;: _(&quot;Essential Cookies&quot;),
-
-            # Required sections will be already selected and read-only
-            &quot;required&quot;: True,
-
-            # Section summary will be shown in the modal dialog and preferences form.
-            # Provide either a translatable string or a HTML template name.
-            &quot;summary&quot;: _(&quot;These cookies are always on, as they’re essential for making this website work, and making it safe. Without these cookies, services you’ve asked for can’t be provided.&quot;),
-            &quot;summary_template_name&quot;: &quot;&quot;,
-
-            # Section description will be used at the extended cookie explanation in the cookie management view.
-            # Provide either a translatable string or a HTML template name.
-            &quot;description&quot;: _(&quot;These cookies are always on, as they’re essential for making this website work, and making it safe. Without these cookies, services you’ve asked for can’t be provided.&quot;),
-            &quot;description_template_name&quot;: &quot;&quot;,
-
-            # Cookie providers are websites that set the cookies on your website
-            &quot;providers&quot;: [
-                {
-                    # Translatable title of the provider
-                    &quot;title&quot;: _(&quot;This website&quot;),
-
-                    # Provider description will be used at the extended cookie explanation in the cookie management view.
-                    # Provide either a translatable string or a HTML template name.
-                    &quot;description&quot;: &quot;&quot;,
-                    &quot;description_template_name&quot;: &quot;&quot;,
-
-                    # A list of cookies set by the provider
-                    &quot;cookies&quot;: [
-                        {
-                            # Cookie name can include wildcard syntax like &quot;abc_*&quot;
-                            &quot;cookie_name&quot;: &quot;sessionid&quot;,
-
-                            # Human-readable translated duration of the cookie
-                            &quot;duration&quot;: _(&quot;2 Weeks&quot;),
-
-                            # Cookie description will be used at the extended cookie explanation in the cookie management view.
-                            # Provide either a translatable string or a HTML template name.
-                            &quot;description&quot;: _(&quot;Session ID used to authenticate you and give permissions to use the site.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-
-                            # Cookie domain will be used to delete cookies if a section is unchecked
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;csrftoken&quot;,
-                            &quot;duration&quot;: _(&quot;Session&quot;),
-                            &quot;description&quot;: _(&quot;Security token used to ensure that no hackers are posting forms on your behalf.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;cookie_consent&quot;,
-                            &quot;duration&quot;: _(&quot;6 Years&quot;),
-                            &quot;description&quot;: _(&quot;Settings of Cookie Consent preferences.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                    ]
-                },
-            ],
-        },
-        {
-            &quot;slug&quot;: &quot;functionality&quot;,
-            &quot;title&quot;: _(&quot;Functionality Cookies&quot;),
-
-            # Conditional HTML snippet will be loaded or rendered if this section is selected
-            &quot;conditional_html_template_name&quot;: &quot;conditional_html/functionality.html&quot;,
-            &quot;required&quot;: False,
-            &quot;summary&quot;: _(&quot;These cookies help us provide enhanced functionality and personalisation, and remember your settings. They may be set by us or by third party providers.&quot;),
-            &quot;summary_template_name&quot;: &quot;&quot;,
-            &quot;description&quot;: _(&quot;These cookies help us provide enhanced functionality and personalisation, and remember your settings. They may be set by us or by third party providers.&quot;),
-            &quot;description_template_name&quot;: &quot;&quot;,
-            &quot;providers&quot;: [
-                {
-                    &quot;title&quot;: _(&quot;Youtube&quot;),
-                    &quot;description&quot;: _(&quot;Youtube is a video platform from which we are embedding video tutorials and other informational videos.&quot;),
-                    &quot;description_template_name&quot;: &quot;&quot;,
-                    &quot;cookies&quot;: [
-                        {
-                            &quot;cookie_name&quot;: &quot;CONSENT&quot;,
-                            &quot;duration&quot;: _(&quot;2 Years&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.youtube.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;VISITOR_INFO1_LIVE&quot;,
-                            &quot;duration&quot;: _(&quot;6 Months&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;YSC&quot;,
-                            &quot;duration&quot;: _(&quot;Session&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;1P_JAR&quot;,
-                            &quot;duration&quot;: _(&quot;1 Month&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.google.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;NID&quot;,
-                            &quot;duration&quot;: _(&quot;6 Months&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.google.com&quot;,
-                        },
-                    ]
-                },
-            ],
-        },
-        {
-            &quot;slug&quot;: &quot;performance&quot;,
-            &quot;title&quot;: _(&quot;Performance Cookies&quot;),
-            &quot;conditional_html_template_name&quot;: &quot;conditional_html/performance.html&quot;,
-            &quot;required&quot;: False,
-            &quot;summary&quot;: _(&quot;These cookies help us analyse how many people are using this website, where they come from and how they're using it. If you opt out of these cookies, we can’t get feedback to make this website better for you and all our users.&quot;),
-            &quot;summary_template_name&quot;: &quot;&quot;,
-            &quot;description&quot;: _(&quot;These cookies help us analyse how many people are using this website, where they come from and how they're using it. If you opt out of these cookies, we can’t get feedback to make this website better for you and all our users.&quot;),
-            &quot;description_template_name&quot;: &quot;&quot;,
-            &quot;providers&quot;: [
-                {
-                    &quot;title&quot;: _(&quot;Google Analytics&quot;),
-                    &quot;description&quot;: _(&quot;Google Analytics is used to track website usage statistics.&quot;),
-                    &quot;description_template_name&quot;: &quot;&quot;,
-                    &quot;cookies&quot;: [
-                        {
-                            &quot;cookie_name&quot;: &quot;_ga&quot;,
-                            &quot;duration&quot;: _(&quot;2 Years&quot;),
-                            &quot;description&quot;: _(&quot;Used to distinguish users.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;_gid&quot;,
-                            &quot;duration&quot;: _(&quot;24 Hours&quot;),
-                            &quot;description&quot;: _(&quot;Used to distinguish users.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;_ga_*&quot;,
-                            &quot;duration&quot;: _(&quot;2 Years&quot;),
-                            &quot;description&quot;: _(&quot;Used to persist session state.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;_gac_gb_*&quot;,
-                            &quot;duration&quot;: _(&quot;90 Days&quot;),
-                            &quot;description&quot;: _(&quot;Contains campaign related information. If you have linked your Google Analytics and Google Ads accounts, Google Ads website conversion tags will read this cookie unless you opt-out.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;_gat_gtag_UA_*&quot;,
-                            &quot;duration&quot;: _(&quot;1 Minute&quot;),
-                            &quot;description&quot;: _(&quot;Stores unique user ID.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                    ]
-                },
-            ],
-        },
-        {
-            &quot;slug&quot;: &quot;marketing&quot;,
-            &quot;title&quot;: _(&quot;Marketing Cookies&quot;),
-            &quot;conditional_html_template_name&quot;: &quot;conditional_html/marketing.html&quot;,
-            &quot;required&quot;: False,
-            &quot;summary&quot;: _(&quot;These cookies are set by our advertising partners to track your activity and show you relevant ads on other sites as you browse the internet.&quot;),
-            &quot;summary_template_name&quot;: &quot;&quot;,
-            &quot;description&quot;: _(&quot;These cookies are set by our advertising partners to track your activity and show you relevant ads on other sites as you browse the internet.&quot;),
-            &quot;description_template_name&quot;: &quot;&quot;,
-            &quot;providers&quot;: [
-                {
-                    &quot;title&quot;: _(&quot;Facebook Pixel&quot;),
-                    &quot;description&quot;: _(&quot;Facebook Pixel lets us track how well our ads on Facebook performed, and which ads led to registration or subscriptions.&quot;),
-                    &quot;description_template_name&quot;: &quot;&quot;,
-                    &quot;cookies&quot;: [
-                        {
-                            &quot;cookie_name&quot;: &quot;c_user&quot;,
-                            &quot;duration&quot;: _(&quot;3 Months / Session&quot;),
-                            &quot;description&quot;: _(&quot;Contains the user ID of the currently logged in user.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;datr&quot;,
-                            &quot;duration&quot;: _(&quot;2 Years&quot;),
-                            &quot;description&quot;: _(&quot;Identifies the web browser being used to connect to Facebook independent of the logged in user.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;sb&quot;,
-                            &quot;duration&quot;: _(&quot;Persistent&quot;),
-                            &quot;description&quot;: _(&quot;For storing browser details.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;dpr&quot;,
-                            &quot;duration&quot;: _(&quot;7 Days&quot;),
-                            &quot;description&quot;: _(&quot;For delivering an optimal experience for your device’s screen.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;x-referer&quot;,
-                            &quot;duration&quot;: _(&quot;Session&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;spin&quot;,
-                            &quot;duration&quot;: _(&quot;25 Hours&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;xs&quot;,
-                            &quot;duration&quot;: _(&quot;3 Months / Session&quot;),
-                            &quot;description&quot;: _(&quot;Stores the session ID.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;fr&quot;,
-                            &quot;duration&quot;: _(&quot;3 Months / Session&quot;),
-                            &quot;description&quot;: _(&quot;Provides ad delivery or retargeting.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;usida&quot;,
-                            &quot;duration&quot;: _(&quot;Session&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;presence&quot;,
-                            &quot;duration&quot;: _(&quot;Session&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;_fbp&quot;,
-                            &quot;duration&quot;: _(&quot;3 Months&quot;),
-                            &quot;description&quot;: _(&quot;Used to deliver a series of advertisement products such as real time bidding from third party advertisers.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;m_pixel_ratio&quot;,
-                            &quot;duration&quot;: _(&quot;Session&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.facebook.com&quot;,
-                        },
-                    ]
-                },
-            ],
-        },
-    ]
-}
-</code></pre>
-<h3 id="7-create-templates-for-your-conditional-html-snippets">7. Create templates for your conditional HTML snippets</h3>
-<p>Create templates for the snippets that will be loaded or rendered when a particular section is chosen, for example:</p>
-<ul>
-<li>conditional_html/functionality.html</li>
-<li>conditional_html/performance.html</li>
-<li>conditional_html/marketing.html</li>
-</ul>
-<p>For testing, you can add the markup like:</p>
-<pre><code class="language-html">&lt;script&gt;
-    console.log('Conditional functionality code loaded');
-&lt;/script&gt;
-</code></pre>
-<p><strong>Manage the scripts that create your strictly necessary cookies separately, unrelated to the Django GDPR Cookie Consent app.</strong></p>
-<h3 id="8-translate-your-titles-and-descriptions">8. Translate your titles and descriptions</h3>
-<p>If your website has more than one language, prepare the translations:</p>
-<ul>
-<li>Use management command <code>makemessages</code> to collect translatable strings into <code>django.po</code> files.</li>
-<li>Translate the strings to the languages you need.</li>
-<li>Then, use the management command <code>compilemessages</code> to compile them to <code>django.mo</code> files.</li>
-</ul>
-<h3 id="9-customize-the-styling">9. Customize the styling</h3>
-<p>The modal dialog uses the fonts of the website.</p>
-<p>Colors can be modified by CSS custom properties:</p>
-<pre><code class="language-css">body {
-  --cc-primary: #007bff;
-  --cc-light-gray: #ccc;
-  --cc-dark-gray: #343a40;
-  --cc-light: #fff;
-  --cc-backdrop: rgba(0, 0, 0, 0.5);
-}
-</code></pre>
-<p>Also, all essential elements have CSS classes with <code>cc-</code> prefix, and you can overwrite some of their properties. Alternatively, you can create a custom CSS file and link to it instead.</p>
-<p>If you need even more control, you can overwrite the templates by copying them from the app to analogous your project's templates directory and change the markup.</p>
-<h3 id="10-optional-add-conditional-renderings-in-templates">10. Optional: add conditional renderings in templates</h3>
-<p>If you enabled the <code>gdpr_cookie_consent</code> context processor, then you can check if a section was chosen by the visitor in any template by this:</p>
-<pre><code class="language-html">{% if &quot;functionality&quot; in cookie_consent_controller.checked_sections %}
-    &lt;!-- add some optional functionality --&gt;
-{% endif %}
-</code></pre>
-<p>If you want to do the analogous check in JavaScript, you could, for example, set a global variable in conditional templates and check for its value elsewhere:</p>
-<pre><code class="language-html">{# conditional_html/functionality.html #}
-&lt;script&gt;
-window.ENABLE_YOUTUBE_EMBEDS = true;
-&lt;/script&gt;
-</code></pre>
-<pre><code class="language-javascript">// some javascript file
-if (window.ENABLE_YOUTUBE_EMBEDS) {
-   embed_youtube_videos();
-}
-</code></pre>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>The actual website's compliance with the GDRP Cookie Law depends on the configuration of each use case. Django GDPR Cookie Consent app provides the mechanism to make that possible, but it's up to you how you configure and integrate it.</p>
 <h2 id="contact">Contact</h2>
-<p>For technical questions or bug reports, please contact <a href="https://github.com/archatas">@archatas</a> on Github or <a href="https://twitter.com/DjangoTricks">@DjangoTricks</a> on Twitter.</p></div>
+<p>For technical questions or bug reports, please contact Aidas Bendoraitis by <a href="https://github.com/archatas">@archatas</a> on Github or <a href="https://twitter.com/DjangoTricks">@DjangoTricks</a> on Twitter.</p></div>
             </div>
         </div>
 
@@ -617,5 +307,5 @@ if (window.ENABLE_YOUTUBE_EMBEDS) {
 
 <!--
 MkDocs version : 1.2.3
-Build Date UTC : 2021-11-13 01:01:29.397613+00:00
+Build Date UTC : 2021-11-13 05:40:59.340985+00:00
 -->

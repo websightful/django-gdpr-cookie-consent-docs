@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Aidas Bendoraitis a.k.a. archatas / DjangoTricks">
+        <link rel="canonical" href="https://archatas.github.io/django-gdpr-cookie-consent-docs/customization/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Customization - Django GDPR Cookie Consent</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Django GDPR Cookie Consent</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../getting-started/" class="nav-link">Getting Started</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Customization</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../cookie-consent-settings/" class="dropdown-item">Settings Example</a>
+</li>
+                                    
+<li>
+    <a href="../changelog/" class="dropdown-item">Changelog</a>
+</li>
+                                    
+<li>
+    <a href="../license/" class="dropdown-item">License</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../getting-started/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../cookie-consent-settings/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://websightful.gumroad.com/l/django-gdpr-cookie-consent" class="nav-link">Buy Now!</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#customization" class="nav-link">Customization</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#descriptions" class="nav-link">Descriptions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#styling" class="nav-link">Styling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#templates" class="nav-link">Templates</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#passing-variables-to-cookie-consent-management-templates" class="nav-link">Passing Variables to Cookie Consent Management Templates</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#conditional-rendering-in-templates" class="nav-link">Conditional Rendering in Templates</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#conditional-rendering-in-javascript" class="nav-link">Conditional Rendering in JavaScript</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#using-content-security-policy-with-django-csp" class="nav-link">Using Content-Security-Policy with Django-CSP</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="customization">Customization</h1>
+<h2 id="descriptions">Descriptions</h2>
+<p>Each description in the <a href="../cookie-consent-settings/"><code>COOKIE_CONSENT_SETTINGS</code></a> configuration can be either set as <code>description</code> translatable string, or as a <code>description_template_name</code> template path with any necessary HTML markup.</p>
+<h2 id="styling">Styling</h2>
+<p>The modal dialog uses the fonts of the website.</p>
+<p>Colors can be modified by CSS custom properties:</p>
+<pre><code class="language-css">body {
+  --cc-primary: #007bff;
+  --cc-light-gray: #ccc;
+  --cc-dark-gray: #343a40;
+  --cc-light: #fff;
+  --cc-backdrop: rgba(0, 0, 0, 0.5);
+}
+</code></pre>
+<p>All essential elements have CSS classes with <code>cc-</code> prefix, and you can overwrite some of their properties.</p>
+<p>If you are using a CSS framework like Bootstrap or TailwindCSS, you can set the extra CSS classes for particular elements in the <code>styling</code> section of <a href="../cookie-consent-settings/"><code>COOKIE_CONSENT_SETTINGS</code></a>:</p>
+<pre><code class="language-python">&quot;styling&quot;: {
+    &quot;primary_button_css_classes&quot;: &quot;&quot;,
+    &quot;secondary_button_css_classes&quot;: &quot;&quot;,
+    &quot;provider_list_css_classes&quot;: &quot;&quot;,
+    &quot;provider_item_css_classes&quot;: &quot;&quot;,
+    &quot;link_css_classes&quot;: &quot;&quot;,
+    &quot;section_anchor_css_classes&quot;: &quot;&quot;,
+},
+</code></pre>
+<p>If you can't implement what you need with the methods above, instead you can create a custom CSS file and link to it. And of that is still not an option for you, you can also overwrite the templates.</p>
+<h2 id="templates">Templates</h2>
+<p>The templates used for the cookie consent management can be copied to the templates directory of the project and overwritten. Mostly necessary templates are these:</p>
+<ul>
+<li><code>gdpr_cookie_consent/descriptions/what_are_cookies.html</code> is the description of the cookies in the modal dialog and cookie management page.</li>
+<li><code>gdpr_cookie_consent/descriptions/extra.html</code> is the extra HTML going at the bottom of cookie management page.</li>
+<li><code>gdpr_cookie_consent/modal_dialog.html</code> is the template for the cookie consent's modal dialog.</li>
+<li><code>gdpr_cookie_consent/cookies_management.html</code> is the template for the external page.</li>
+</ul>
+<h2 id="passing-variables-to-cookie-consent-management-templates">Passing Variables to Cookie Consent Management Templates</h2>
+<p>If you don't want to hardcode some variables like API keys in the conditional HTML files, you can pass them in <code>extra_context</code> section of <a href="../cookie-consent-settings/"><code>COOKIE_CONSENT_SETTINGS</code></a>:</p>
+<pre><code class="language-python">&quot;extra_context&quot;: {
+    &quot;GOOGLE_ANALYTICS_TRACKING_ID&quot;: get_secret(&quot;GOOGLE_ANALYTICS_TRACKING_ID&quot;),
+    &quot;STRIPE_PUBLISHABLE_KEY&quot;: get_secret(&quot;STRIPE_PUBLISHABLE_KEY&quot;),
+},
+</code></pre>
+<p>In this example, <code>get_secret()</code> should be a function implemented by you, that reads the secret values from the environment variables, unversioned <code>secrets.json</code> file, or elsewhere.</p>
+<p>The variables mentioned in <code>extra_context</code> will be passed to all templates of Django GDPR Cookie Consent.</p>
+<h2 id="conditional-rendering-in-templates">Conditional Rendering in Templates</h2>
+<p>Enable <code>gdpr_cookie_consent</code> context processor in the template settings:</p>
+<pre><code class="language-python">TEMPLATES = [
+    {
+        # …
+        &quot;OPTIONS&quot;: {
+            &quot;context_processors&quot;: [
+                # …
+                &quot;gdpr_cookie_consent.context_processors.gdpr_cookie_consent&quot;,
+            ],
+        },
+    },
+]
+</code></pre>
+<p>Now you can check if a section was chosen by the visitor in any template by this:</p>
+<pre><code class="language-html">{% if &quot;functionality&quot; in cookie_consent_controller.checked_sections %}
+    &lt;!-- add some optional functionality --&gt;
+{% endif %}
+</code></pre>
+<p>Note that this conditional rendering will happen only after page reload, not just after closing the Cookie Consent modal dialog.</p>
+<h2 id="conditional-rendering-in-javascript">Conditional Rendering in JavaScript</h2>
+<p>If you are using ReactJS, Vue, AngularJS, or other frontend library to render HTML, you can check if a cookie section was chosen by the following technique. At first set a global variable in conditional templates:</p>
+<pre><code class="language-html">{# conditional_html/functionality.html #}
+&lt;script&gt;
+window.ENABLE_YOUTUBE_EMBEDS = true;
+&lt;/script&gt;
+</code></pre>
+<p>Then check for that value in some rendering functions:</p>
+<pre><code class="language-javascript">// some javascript file
+if (window.ENABLE_YOUTUBE_EMBEDS) {
+   embed_youtube_videos();
+}
+</code></pre>
+<h2 id="using-content-security-policy-with-django-csp">Using Content-Security-Policy with Django-CSP</h2>
+<p>Django GDPR Cookie Consent is compatible with Content-Security-Policy via Django-CSP app. To use it together, you just need to do two things.</p>
+<p>In the project's settings, enable nonces:</p>
+<pre><code class="language-python">CSP_INCLUDE_NONCE_IN = [&quot;script-src&quot;, &quot;style-src&quot;]
+</code></pre>
+<p>In the conditional html snippets, set nonces for inline <code>&lt;style&gt;</code> and <code>&lt;script&gt;</code> tags:</p>
+<pre><code class="language-html">&lt;style nonce=&quot;{{ request.csp_nonce }}&quot;&gt;
+    body {
+        background: red;
+    }
+&lt;/style&gt;
+
+&lt;script nonce=&quot;{{ request.csp_nonce }}&quot;&gt;
+    console.log('Conditional script loaded!');
+&lt;/script&gt;
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

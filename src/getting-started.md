@@ -115,7 +115,7 @@ For testing, you can add the markup like:
 
 The conditional html might include external or inline styles, external or inline  JavaScripts, and other HTML snippets.
 
-Manage the scripts that create your __Essential (strictly necessary)__ cookies separately, unrelated conditional html snippets.
+Manage the scripts that create your __Essential (strictly necessary)__ cookies separately, unrelated to conditional html snippets.
 
 ### 3. Translate your titles and descriptions
 

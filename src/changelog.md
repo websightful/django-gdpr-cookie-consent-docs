@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]
 ------------
 
+[v0.3.2] - 2021-11-14
+------------------
+
+### Fixed
+
+- More spacious layout for the modal dialog on mobile screens.
+
 [v0.3.1] - 2021-11-12
 ------------------
 

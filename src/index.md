@@ -27,6 +27,7 @@ There are lots of benefits:
 - Saves at least a week of development work.
 - Highly flexible and configurable.
 - Can be used for as many Django websites as necessary.
+- Easy to copy the configuration from one project to another.
 - No external dependencies, just Django>=2.2, Python 3, and plain modern JavaScript.
 - Comes with pretty nice-looking default styling and a responsive layout.
 - Typography and buttons will match your website's style (no iframes used).
@@ -69,4 +70,4 @@ The actual website's compliance with the GDRP Cookie Law depends on the configur
 
 ## Contact
 
-For technical questions or bug reports, please contact Aidas Bendoraitis by [@archatas](https://github.com/archatas) on Github or [@DjangoTricks](https://twitter.com/DjangoTricks) on Twitter.
+For technical questions, feature requests, or bug reports, please contact Aidas Bendoraitis at <https://www.djangotricks.com/feedback/>.

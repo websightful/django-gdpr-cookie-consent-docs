@@ -11,6 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]
 ------------
 
+[v1.2.1] - 2022-09-14
+------------------
+
+### Added
+
+- Pointer cursor for "Show cookie providers".
+
+### Fixed
+
+- gettext_lazy usage in the settings.
+
+
 [v1.2.0] - 2022-08-07
 ------------------
 

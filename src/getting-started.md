@@ -11,8 +11,8 @@ Create a directory `private_wheels/` in your project's repository and add the wh
 Link to this file in your `requirements.txt`:
 
 ```
-Django==3.2
-private_wheels/django_gdpr_cookie_consent-1.2.0-py2.py3-none-any.whl
+Django==4.1.1
+private_wheels/django_gdpr_cookie_consent-1.2.1-py2.py3-none-any.whl
 ```
 
 Install the pip requirements from the `requirements.txt` file into your project's virtual environment:
@@ -24,7 +24,7 @@ Install the pip requirements from the `requirements.txt` file into your project'
 Alternatively to start quickly, install the wheel file into your Django project's virtual environment right from the shell:
 
 ```shell
-(venv)$ pip install /path/to/django_gdpr_cookie_consent-1.2.0-py2.py3-none-any.whl
+(venv)$ pip install /path/to/django_gdpr_cookie_consent-1.2.1-py2.py3-none-any.whl
 ```
 
 
@@ -85,7 +85,13 @@ Copy the example of [`COOKIE_CONSENT_SETTINGS`](cookie-consent-settings.md) to t
 
 In the example above, there are four cookie sections: __Essential__ (strictly necessary), __Functionality__ (optional), __Performance__ (optional), and __Marketing__ (optional).
 
-### 2. Create templates for your conditional HTML snippets
+### 2. Create templates to render HTML for non-required cookies
+
+Cookies that are set conditionally based upon a visitor’s choices must be rendered from conditional templates. 
+
+For example, analytics providers typically instruct to place the analytics tag within the page’s `<head>` section. However, suppose visitors are being given a choice of whether to accept analytics cookies using Django GDPR Cookie Consent. In that case, the analytics tag that sets the analytics cookies must be rendered from conditional templates. 
+
+The conditional HTML might include external or inline styles, external or inline JavaScripts, and other HTML snippets. 
 
 Create templates for the snippets that will be loaded or rendered when a particular section is chosen, for example:
 
@@ -112,8 +118,6 @@ For testing, you can add the markup like:
     console.log('Conditional marketing code loaded.');
 </script>
 ```
-
-The conditional html might include external or inline styles, external or inline  JavaScripts, and other HTML snippets.
 
 Manage the scripts that create your __Essential (strictly necessary)__ cookies separately, unrelated to conditional html snippets.
 

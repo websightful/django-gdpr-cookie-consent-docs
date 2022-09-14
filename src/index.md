@@ -18,7 +18,7 @@ Django GDPR Cookie Consent app was created for Django developers who need to int
 | Configurable                   | ✔︎                                              |
 | Unlimited websites             | ✔︎                                              |
 | Continuous cookie consent logs | ✔︎                                              |
-| Latest package version         | 1.2.0                                          |
+| Latest package version         | 1.2.1                                          |
 
 ## What are the benefits?
 
@@ -66,7 +66,7 @@ Django GDPR Cookie Consent is used in production at these websites:
 
 ## Disclaimer
 
-The actual website's compliance with the GDRP Cookie Law depends on the configuration of each use case. Django GDPR Cookie Consent app provides the mechanism to make that possible, but it's up to you how you configure and integrate it.
+The actual website's compliance with the GDPR Cookie Law depends on the configuration of each use case. Django GDPR Cookie Consent app provides the mechanism to make that possible, but it's up to you how you configure and integrate it.
 
 ## Contact
 

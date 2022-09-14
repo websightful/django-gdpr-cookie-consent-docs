@@ -121,14 +121,14 @@
 <p><a href="https://websightful.gumroad.com/l/django-gdpr-cookie-consent">Get Django GDPR Cookie Consent from Gumroad</a>.</p>
 <p>Create a directory <code>private_wheels/</code> in your project's repository and add the wheel file of the app there.</p>
 <p>Link to this file in your <code>requirements.txt</code>:</p>
-<pre><code>Django==3.2
-private_wheels/django_gdpr_cookie_consent-1.2.0-py2.py3-none-any.whl
+<pre><code>Django==4.1.1
+private_wheels/django_gdpr_cookie_consent-1.2.1-py2.py3-none-any.whl
 </code></pre>
 <p>Install the pip requirements from the <code>requirements.txt</code> file into your project's virtual environment:</p>
 <pre><code class="language-shell">(venv)$ pip install -r requirements.txt
 </code></pre>
 <p>Alternatively to start quickly, install the wheel file into your Django project's virtual environment right from the shell:</p>
-<pre><code class="language-shell">(venv)$ pip install /path/to/django_gdpr_cookie_consent-1.2.0-py2.py3-none-any.whl
+<pre><code class="language-shell">(venv)$ pip install /path/to/django_gdpr_cookie_consent-1.2.1-py2.py3-none-any.whl
 </code></pre>
 <h3 id="2-add-the-app-to-installed_apps-of-your-project-settings">2. Add the app to INSTALLED_APPS of your project settings</h3>
 <pre><code class="language-python">INSTALLED_APPS = [
@@ -166,7 +166,10 @@ urlpatterns = [
 <h3 id="1-copy-paste-and-modify-the-cookie-consent-configuration">1. Copy, paste, and modify the cookie consent configuration</h3>
 <p>Copy the example of <a href="../cookie-consent-settings/"><code>COOKIE_CONSENT_SETTINGS</code></a> to the end of your project settings, then modify it to match the cookie usage of your website.</p>
 <p>In the example above, there are four cookie sections: <strong>Essential</strong> (strictly necessary), <strong>Functionality</strong> (optional), <strong>Performance</strong> (optional), and <strong>Marketing</strong> (optional).</p>
-<h3 id="2-create-templates-for-your-conditional-html-snippets">2. Create templates for your conditional HTML snippets</h3>
+<h3 id="2-create-templates-to-render-html-for-non-required-cookies">2. Create templates to render HTML for non-required cookies</h3>
+<p>Cookies that are set conditionally based upon a visitor’s choices must be rendered from conditional templates. </p>
+<p>For example, analytics providers typically instruct to place the analytics tag within the page’s <code>&lt;head&gt;</code> section. However, suppose visitors are being given a choice of whether to accept analytics cookies using Django GDPR Cookie Consent. In that case, the analytics tag that sets the analytics cookies must be rendered from conditional templates. </p>
+<p>The conditional HTML might include external or inline styles, external or inline JavaScripts, and other HTML snippets. </p>
 <p>Create templates for the snippets that will be loaded or rendered when a particular section is chosen, for example:</p>
 <ul>
 <li>conditional_html/functionality.html</li>
@@ -186,7 +189,6 @@ urlpatterns = [
     console.log('Conditional marketing code loaded.');
 &lt;/script&gt;
 </code></pre>
-<p>The conditional html might include external or inline styles, external or inline  JavaScripts, and other HTML snippets.</p>
 <p>Manage the scripts that create your <strong>Essential (strictly necessary)</strong> cookies separately, unrelated to conditional html snippets.</p>
 <h3 id="3-translate-your-titles-and-descriptions">3. Translate your titles and descriptions</h3>
 <p>If your website has more than one language, prepare the translations:</p>

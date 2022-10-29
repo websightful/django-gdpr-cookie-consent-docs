@@ -109,7 +109,7 @@
 
 <h1 id="the-example-of-cookie-consent-settings">The Example of Cookie Consent Settings</h1>
 <p>Copy this to your project's settings and modify according to your website's needs:</p>
-<pre><code class="language-python">_ = lambda text: text
+<pre><code class="language-python">from django.utils.translation import gettext_lazy as _
 
 COOKIE_CONSENT_SETTINGS = {
     # Base template will be used for the cookie management view.
@@ -118,13 +118,25 @@ COOKIE_CONSENT_SETTINGS = {
 
     # Description will be used in the modal dialog and cookie management view.
     # Provide either a translatable string or a HTML template name.
-    &quot;description&quot;: _(&quot;&quot;),
+    &quot;description&quot;: &quot;&quot;,
     &quot;description_template_name&quot;: &quot;gdpr_cookie_consent/descriptions/what_are_cookies.html&quot;,
 
     # Extra information will be used at the end of cookie management view.
     # Provide either a translatable string or a HTML template name.
-    &quot;extra_information&quot;: _(&quot;&quot;),
+    &quot;extra_information&quot;: &quot;&quot;,
     &quot;extra_information_template_name&quot;: &quot;gdpr_cookie_consent/descriptions/extra.html&quot;,
+
+    # Button texts can be customized.
+    &quot;buttons&quot;: {
+        &quot;accept_all_dialog&quot;: _(&quot;Accept all recommended&quot;),
+        &quot;reject_all_dialog&quot;: _(&quot;Reject non-required&quot;),
+        &quot;manage_cookies&quot;: _(&quot;Manage cookies&quot;),
+        &quot;accept_all_config&quot;: _(&quot;Accept all&quot;),
+        &quot;reject_all_config&quot;: _(&quot;Reject all&quot;),
+        &quot;save_preferences&quot;: _(&quot;Save preferences&quot;),
+        &quot;save_and_close&quot;: _(&quot;Save and close&quot;),
+        &quot;close&quot;: _(&quot;Close&quot;),
+    },
 
     # All important elements will have CSS classes with `cc-` prefix,
     # by which you can target them and overwrite their styling.
@@ -137,6 +149,7 @@ COOKIE_CONSENT_SETTINGS = {
         &quot;link_css_classes&quot;: &quot;&quot;,
         &quot;section_anchor_css_classes&quot;: &quot;&quot;,
     },
+
     # Any variables that will be passed to conditional HTML snippets
     &quot;extra_context&quot;: {
         &quot;API_KEY_1&quot;: &quot;abcdefg12345&quot;,

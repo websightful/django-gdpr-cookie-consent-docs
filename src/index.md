@@ -8,17 +8,19 @@ As stated by [GDPR cookie law](https://gdpr.eu/cookies/), websites that serve co
 
 Django GDPR Cookie Consent app was created for Django developers who need to integrate a Cookie Consent dialog in their Django projects. The existing open-source Django alternatives at the time of writing were not fully compliant or not feature complete. In addition, the current external services were costly and not customizable enough.
 
-| Feature                        | Value                                          |
-|--------------------------------|------------------------------------------------|
-| Supported modern browsers      | Chrome, Firefox, Safari, Opera, Microsoft Edge |
-| Supported Django versions      | 2.2, 3.0, 3.1, 3.2, 4.0, 4.1                         |
-| Supported Python versions      | 3.5, 3.6, 3.7, 3.8, 3.9, 3.10                             |
-| Responsive layout              | ✔︎                                              |
-| Translatable                   | ✔︎                                              |
-| Configurable                   | ✔︎                                              |
-| Unlimited websites             | ✔︎                                              |
-| Continuous cookie consent logs | ✔︎                                              |
-| Latest package version         | 1.2.1                                          |
+| Feature                             | Value                                          |
+|-------------------------------------|------------------------------------------------|
+| Supported modern browsers           | Chrome, Firefox, Safari, Opera, Microsoft Edge |
+| Supported Django versions           | 2.2, 3.0, 3.1, 3.2, 4.0, 4.1                   |
+| Supported Python versions           | 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11            |
+| Responsive layout                   | ✔︎                                              |
+| Multiple layout options             | ✔︎                                              |
+| Translatable                        | ✔︎                                              |
+| Configurable                        | ✔︎                                              |
+| Unlimited websites                  | ✔︎                                              |
+| Continuous cookie consent logs      | ✔︎                                              |
+| Anonymized IP addresses in the logs | ✔︎                                              |
+| Latest package version              | 2.0.0                                          |
 
 ## What are the benefits?
 

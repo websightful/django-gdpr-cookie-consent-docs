@@ -31,6 +31,12 @@ COOKIE_CONSENT_SETTINGS = {
         "save_and_close": _("Save and close"),
         "close": _("Close"),
     },
+
+    # Should it be possible to close the dialog without choosing a consent?
+    "show_dialog_close_button": True,
+    
+    # Dialog position: center, top, left, right, bottom
+    "dialog_position": "center",
     
     # All important elements will have CSS classes with `cc-` prefix,
     # by which you can target them and overwrite their styling.
@@ -66,6 +72,13 @@ COOKIE_CONSENT_SETTINGS = {
 
             # Required sections will be already selected and read-only
             "required": True,
+
+            # Preselected sections will be selected in the configuration page before the consent is given.
+            # (all required sections will be preselected too and this setting is ignored for those)
+            # N.B. Laws of the United Kingdom, Germany, and France require that
+            # the opt-in consent for cookies must not be pre-enabled,
+            # so consult your lawyers before enabling this setting.
+            "preselected": True,
 
             # Section summary will be shown in the modal dialog and preferences form.
             # Provide either a translatable string or a HTML template name.

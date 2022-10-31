@@ -104,6 +104,14 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#layout-options" class="nav-link">Layout options</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#button-texts" class="nav-link">Button texts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#styling" class="nav-link">Styling</a>
               <ul class="nav flex-column">
               </ul>
@@ -138,6 +146,29 @@
 <h1 id="customization">Customization</h1>
 <h2 id="descriptions">Descriptions</h2>
 <p>Each description in the <a href="../cookie-consent-settings/"><code>COOKIE_CONSENT_SETTINGS</code></a> configuration can be either set as <code>description</code> translatable string, or as a <code>description_template_name</code> template path with any necessary HTML markup.</p>
+<h2 id="layout-options">Layout options</h2>
+<p>There are five possible modal dialog layout options, set as the <code>dialog_position</code> setting:</p>
+<ul>
+<li><code>center</code> - a dialog box is shown in the middle of the window.</li>
+<li><code>top</code> - a dialog is at the full-width top bar.</li>
+<li><code>left</code> - a dialog is at the left sidebar.</li>
+<li><code>right</code> - a dialog is at the right sidebar.</li>
+<li><code>bottom</code> - a dialog is at the full-width bottom bar.</li>
+</ul>
+<p>The <code>show_dialog_close_button</code> setting tells whether to show or hide the close button for the dialog. Setting it to <code>False</code> is recommended because you need somewhat consent before activating JavaScript functionalities on your websites as soon as possible.</p>
+<h2 id="button-texts">Button texts</h2>
+<p>Button texts can be cusomized by the <code>buttons</code> setting:</p>
+<pre><code class="language-python">&quot;buttons&quot;: {
+    &quot;accept_all_dialog&quot;: _(&quot;Accept all&quot;),
+    &quot;reject_all_dialog&quot;: _(&quot;Reject all&quot;),
+    &quot;manage_cookies&quot;: _(&quot;Manage cookies&quot;),
+    &quot;accept_all_config&quot;: _(&quot;Accept all&quot;),
+    &quot;reject_all_config&quot;: _(&quot;Reject all&quot;),
+    &quot;save_preferences&quot;: _(&quot;Save preferences&quot;),
+    &quot;save_and_close&quot;: _(&quot;Save and close&quot;),
+    &quot;close&quot;: _(&quot;Close&quot;),
+},
+</code></pre>
 <h2 id="styling">Styling</h2>
 <p>The modal dialog uses the fonts of the website.</p>
 <p>Colors can be modified by CSS custom properties:</p>

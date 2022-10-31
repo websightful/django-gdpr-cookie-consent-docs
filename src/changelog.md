@@ -11,6 +11,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]
 ------------
 
+[v2.0.0] - 2022-10-31
+------------------
+
+### Added
+
+- Button text customization.
+- Possibility to preselect a section in configuration.
+- IP addresses in the logs anonymized.
+- Python 3.11 support.
+- Dialog position configurations: center, top, left, right, bottom.
+
+### Changed
+
+- Dialog close button made optional and not shown by default.
+
 [v1.2.1] - 2022-09-14
 ------------------
 

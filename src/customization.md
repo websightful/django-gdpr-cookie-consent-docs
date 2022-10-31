@@ -4,6 +4,35 @@
 
 Each description in the [`COOKIE_CONSENT_SETTINGS`](cookie-consent-settings.md) configuration can be either set as `description` translatable string, or as a `description_template_name` template path with any necessary HTML markup.
 
+## Layout options
+
+There are five possible modal dialog layout options, set as the `dialog_position` setting:
+
+- `center` - a dialog box is shown in the middle of the window.
+- `top` - a dialog is at the full-width top bar.
+- `left` - a dialog is at the left sidebar.
+- `right` - a dialog is at the right sidebar.
+- `bottom` - a dialog is at the full-width bottom bar.
+
+The `show_dialog_close_button` setting tells whether to show or hide the close button for the dialog. Setting it to `False` is recommended because you need somewhat consent before activating JavaScript functionalities on your websites as soon as possible.
+
+## Button texts
+
+Button texts can be cusomized by the `buttons` setting:
+
+```python
+"buttons": {
+    "accept_all_dialog": _("Accept all"),
+    "reject_all_dialog": _("Reject all"),
+    "manage_cookies": _("Manage cookies"),
+    "accept_all_config": _("Accept all"),
+    "reject_all_config": _("Reject all"),
+    "save_preferences": _("Save preferences"),
+    "save_and_close": _("Save and close"),
+    "close": _("Close"),
+},
+```
+
 ## Styling
 
 The modal dialog uses the fonts of the website.

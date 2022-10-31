@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]
 ------------
 
+[v2.0.1] - 2022-10-31
+------------------
+
+### Fixed
+
+- Python 3.5, 3.6, 3.7, 3.8 support.
+
 [v2.0.0] - 2022-10-31
 ------------------
 

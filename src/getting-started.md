@@ -12,7 +12,7 @@ Link to this file in your `requirements.txt`:
 
 ```
 Django==4.1.2
-private_wheels/django_gdpr_cookie_consent-2.0.1-py2.py3-none-any.whl
+file:./private_wheels/django_gdpr_cookie_consent-2.0.1-py2.py3-none-any.whl
 ```
 
 Install the pip requirements from the `requirements.txt` file into your project's virtual environment:

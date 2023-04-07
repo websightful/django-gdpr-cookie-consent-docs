@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]
 ------------
 
+[v2.1.0] - 2023-04-07
+------------------
+
+### Added
+
+- Django 4.2 support.
+
 [v2.0.1] - 2022-10-31
 ------------------
 

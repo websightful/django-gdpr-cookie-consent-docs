@@ -11,8 +11,8 @@ Create a directory `private_wheels/` in your project's repository and add the wh
 Link to this file in your `requirements.txt`:
 
 ```
-Django==4.1.2
-file:./private_wheels/django_gdpr_cookie_consent-2.0.1-py2.py3-none-any.whl
+Django==4.2
+file:./private_wheels/django_gdpr_cookie_consent-2.1.0-py2.py3-none-any.whl
 ```
 
 Install the pip requirements from the `requirements.txt` file into your project's virtual environment:
@@ -24,7 +24,7 @@ Install the pip requirements from the `requirements.txt` file into your project'
 Alternatively to start quickly, install the wheel file into your Django project's virtual environment right from the shell:
 
 ```shell
-(venv)$ pip install /path/to/django_gdpr_cookie_consent-2.0.1-py2.py3-none-any.whl
+(venv)$ pip install /path/to/django_gdpr_cookie_consent-2.1.0-py2.py3-none-any.whl
 ```
 
 

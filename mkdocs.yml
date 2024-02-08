@@ -6,6 +6,8 @@ docs_dir: src
 site_dir: docs
 repo_url: https://websightful.gumroad.com/l/django-gdpr-cookie-consent
 repo_name: Buy Now!
+extra_css:
+  - css/style.css
 
 nav:
     - Home: 'index.md'

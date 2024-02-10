@@ -1,5 +1,5 @@
 site_name: Django GDPR Cookie Consent
-site_url: https://archatas.github.io/django-gdpr-cookie-consent-docs/
+site_url: https://websightful.github.io/django-gdpr-cookie-consent-docs/
 site_description: Django GDPR Cookie Consent documentation
 site_author: Aidas Bendoraitis a.k.a. archatas / DjangoTricks
 docs_dir: src
@@ -15,5 +15,5 @@ nav:
     - Customization: 'customization.md'
     - 'More':
         - Settings Example: 'cookie-consent-settings.md'
-        - Changelog: 'changelog.md'
-        - License: 'license.md'
+        - Changelog: 'CHANGELOG.md'
+        - License: 'LICENSE.md'

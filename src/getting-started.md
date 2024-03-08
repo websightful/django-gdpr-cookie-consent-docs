@@ -11,7 +11,7 @@ Create a directory `private_wheels/` in your project's repository and add the wh
 Link to this file in your `requirements.txt`:
 
 ```
-Django==4.2
+Django==5.0
 file:./private_wheels/django_gdpr_cookie_consent-2.2.0-py2.py3-none-any.whl
 ```
 

@@ -99,6 +99,8 @@ Create templates for the snippets that will be loaded or rendered when a particu
 - conditional_html/performance.html
 - conditional_html/marketing.html
 
+Strictly necessary sections must not have conditional templates.
+
 For testing, you can add the markup like:
 
 ```html

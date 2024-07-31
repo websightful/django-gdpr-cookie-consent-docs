@@ -11,6 +11,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]
 ------------
 
+[v2.2.1] - 2024-07-31
+------------------
+
+### Fixed
+
+- Required sections don't attempt to include conditional templates.
+
 [v2.2.0] - 2024-03-08
 ------------------
 

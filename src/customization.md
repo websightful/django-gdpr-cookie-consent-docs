@@ -57,6 +57,7 @@ If you are using a CSS framework like Bootstrap or TailwindCSS, you can set the 
 "styling": {
     "primary_button_css_classes": "",
     "secondary_button_css_classes": "",
+    "close_button_css_classes": "",
     "provider_list_css_classes": "",
     "provider_item_css_classes": "",
     "link_css_classes": "",
@@ -89,6 +90,14 @@ If you don't want to hardcode some variables like API keys in the conditional HT
 In this example, `get_secret()` should be a function implemented by you, that reads the secret values from the environment variables, unversioned `secrets.json` file, or elsewhere.
 
 The variables mentioned in `extra_context` will be passed to all templates of Django GDPR Cookie Consent.
+
+## Customisable Redirect URL
+
+After successfully saving the cookie management form, you will be redirected to the start page. To change that, use the `"redirect_url"` setting at `COOKIE_CONSENT_SETTINGS`. It accepts a path name, a hardcoded path, or a full URL:
+
+```python
+"redirect_url": "home",
+```
 
 ## Conditional Rendering in Templates
 

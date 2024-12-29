@@ -11,6 +11,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]
 ------------
 
+[v3.0.0] - 2024-12-29
+------------------
+
+### Added
+
+- Python 3.13 support.
+- Accessibility attributes added to all widgets.
+- Added settings `close_button_css_classes` and `redirect_url`.
+
+### Changed
+
+- Improved keyboard accessibility.
+- Improved styling.
+- README updated.
+
+### Removed
+
+- Dropped support for Python 3.5
+- Dropped support for Django 2.2, 3.0, and 3.1
+
 [v2.3.1] - 2024-08-09
 ------------------
 

@@ -11,9 +11,9 @@ Django GDPR Cookie Consent app was created for Django developers who need to int
 | Feature                             | Value                                          |
 |-------------------------------------|------------------------------------------------|
 | Supported modern browsers           | Chrome, Firefox, Safari, Opera, Microsoft Edge |
-| Supported Django versions           | 2.2, 3.0, 3.1, 3.2, 4.0, 4.1, 4.2, 5.0, 5.1              |
-| Supported Python versions           | 3.5, 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12         |
-| Responsive layout                   | ✔︎                                              |
+| Supported Django versions           | 3.2, 4.0, 4.1, 4.2, 5.0, 5.1              |
+| Supported Python versions           | 3.6, 3.7, 3.8, 3.9, 3.10, 3.11, 3.12, 3.13      |
+| Responsive and accessible layout    | ✔︎                                              |
 | Multiple layout options             | ✔︎                                              |
 | Translatable                        | ✔︎                                              |
 | Configurable                        | ✔︎                                              |

@@ -44,6 +44,7 @@ COOKIE_CONSENT_SETTINGS = {
     "styling": {
         "primary_button_css_classes": "",
         "secondary_button_css_classes": "",
+        "close_button_css_classes": "",
         "provider_list_css_classes": "",
         "provider_item_css_classes": "",
         "link_css_classes": "",
@@ -59,6 +60,10 @@ COOKIE_CONSENT_SETTINGS = {
     # Consent cookie max age say how many seconds to keep the cookie consent preferences.
     # For example, it can be approximately six months
     "consent_cookie_max_age": 60 * 60 * 24 * 30 * 6,
+
+    # Page URL, path, or path name you are redirected to after saving cookie settings.
+    # For example: "home", "/", or "https://example.com"
+    "redirect_url": "/",
 
     # Sections define the purposes of cookie groups.
     # For example: Essential, Functionality, Performance, and Marketing

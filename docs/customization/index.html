@@ -125,6 +125,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#customisable-redirect-url" class="nav-link">Customisable Redirect URL</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-level="2"><a href="#conditional-rendering-in-templates" class="nav-link">Conditional Rendering in Templates</a>
               <ul class="nav flex-column">
               </ul>
@@ -186,6 +190,7 @@
 <pre><code class="language-python">&quot;styling&quot;: {
     &quot;primary_button_css_classes&quot;: &quot;&quot;,
     &quot;secondary_button_css_classes&quot;: &quot;&quot;,
+    &quot;close_button_css_classes&quot;: &quot;&quot;,
     &quot;provider_list_css_classes&quot;: &quot;&quot;,
     &quot;provider_item_css_classes&quot;: &quot;&quot;,
     &quot;link_css_classes&quot;: &quot;&quot;,
@@ -210,6 +215,10 @@
 </code></pre>
 <p>In this example, <code>get_secret()</code> should be a function implemented by you, that reads the secret values from the environment variables, unversioned <code>secrets.json</code> file, or elsewhere.</p>
 <p>The variables mentioned in <code>extra_context</code> will be passed to all templates of Django GDPR Cookie Consent.</p>
+<h2 id="customisable-redirect-url">Customisable Redirect URL</h2>
+<p>After successfully saving the cookie management form, you will be redirected to the start page. To change that, use the <code>"redirect_url"</code> setting at <code>COOKIE_CONSENT_SETTINGS</code>. It accepts a path name, a hardcoded path, or a full URL:</p>
+<pre><code class="language-python">&quot;redirect_url&quot;: &quot;home&quot;,
+</code></pre>
 <h2 id="conditional-rendering-in-templates">Conditional Rendering in Templates</h2>
 <p>Enable <code>gdpr_cookie_consent</code> context processor in the template settings:</p>
 <pre><code class="language-python">TEMPLATES = [

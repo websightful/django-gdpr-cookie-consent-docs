@@ -22,6 +22,9 @@ a code {
 a:hover {
     color: #EAA636;
 }
+a:hover code, a:focus code {
+    color: #EAA636;
+}
 .dropdown-item.active, .dropdown-item:active {
     background-color: #EAA636;
 }

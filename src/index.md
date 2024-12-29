@@ -30,8 +30,9 @@ There are lots of benefits:
 - Highly flexible and configurable.
 - Can be used for as many Django websites as necessary.
 - Easy to copy the configuration from one project to another.
-- No external dependencies, just Django>=2.2, Python 3, and plain modern JavaScript.
+- No external dependencies, just Django>=3.2, Python 3, and plain modern JavaScript.
 - Comes with pretty nice-looking default styling and a responsive layout.
+- Optimized for keyboard and mouse accessibility.
 - Typography and buttons will match your website's style (no iframes used).
 - All functionality can be extended, overwritten, or replaced.
 - Uses configuration in Django settings and templates.
@@ -57,14 +58,23 @@ Descriptions for sections, providers, or cookies are translatable. User preferen
 
 ## Examples
 
-Here are the recorded [Selenium tests](https://github.com/archatas/django-gdpr-cookie-consent-demo-project) for a visual preview:
+The modal dialog centered:
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nSCdNCHQKUY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![Django GDPR Cookie Consent centered](https://raw.githubusercontent.com/archatas/django-gdpr-cookie-consent-demo-project/primary/assets/modal-dialog-center.png)
+
+The modal dialog at the bottom:
+
+![Django GDPR Cookie Consent at the bottom](https://raw.githubusercontent.com/archatas/django-gdpr-cookie-consent-demo-project/primary/assets/modal-dialog-bottom.png)
+
+The modal dialog on the right:
+
+![Django GDPR Cookie Consent on the right](https://raw.githubusercontent.com/archatas/django-gdpr-cookie-consent-demo-project/primary/assets/modal-dialog-right.png)
 
 Django GDPR Cookie Consent is used in production at these websites:
 
 - [1st things 1st](https://www.1st-things-1st.com)
 - [DjangoTricks](https://www.djangotricks.com)
+- [PyBazaar](https://www.pybazaar.com)
 
 ## Disclaimer
 

@@ -10,25 +10,23 @@ h3, h4, h5, h6 {
     margin-top: 1.25em;
     margin-bottom: 0.5em;
 }
-/*
 .bg-primary {
     background: rgb(15 23 42)!important;
 }
 a {
-    color: #8b5cf6;
+    color: #D98E16;
 }
 a:hover {
-    color: #8b5cf6;
+    color: #EAA636;
 }
 .dropdown-item.active, .dropdown-item:active {
-    background-color: #8b5cf6;
+    background-color: #EAA636;
 }
 .dropdown-item:hover, .dropdown-item:focus {
-    background-color: rgb(196 181 253);
+    background-color: #EAA636;
     color: black;
 }
 .form-control:focus {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 0.2rem rgb(196 181 253);
+    border-color: #EAA636;
+    box-shadow: 0 0 0 0.2rem #EAA636;
 }
- */

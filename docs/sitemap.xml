@@ -6,12 +6,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://websightful.github.io/django-gdpr-cookie-consent-docs/CHANGELOG/</loc>
-         <lastmod>2024-12-29</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://websightful.github.io/django-gdpr-cookie-consent-docs/LICENSE/</loc>
+         <loc>https://websightful.github.io/django-gdpr-cookie-consent-docs/changelog/</loc>
          <lastmod>2024-12-29</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -27,6 +22,11 @@
     </url>
     <url>
          <loc>https://websightful.github.io/django-gdpr-cookie-consent-docs/getting-started/</loc>
+         <lastmod>2024-12-29</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://websightful.github.io/django-gdpr-cookie-consent-docs/license/</loc>
          <lastmod>2024-12-29</lastmod>
          <changefreq>daily</changefreq>
     </url>

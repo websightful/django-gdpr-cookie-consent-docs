@@ -15,5 +15,5 @@ nav:
     - Customization: 'customization.md'
     - 'More':
         - Settings Example: 'cookie-consent-settings.md'
-        - Changelog: 'CHANGELOG.md'
-        - License: 'LICENSE.md'
+        - Changelog: 'changelog.md'
+        - License: 'license.md'

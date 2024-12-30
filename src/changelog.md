@@ -11,7 +11,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [Unreleased]
 ------------
 
-[v3.1.0] - 2024-12-29
+[v3.1.1] - 2024-12-30
+------------------
+
+### Fixed
+
+- SCSS file updated.
+
+### Changed
+
+- CSS file refactored and optimized.
+
+[v3.1.1] - 2024-12-29
 ------------------
 
 ### Added

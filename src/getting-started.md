@@ -1,6 +1,6 @@
 # Getting Started
 
-## How to Install
+## How to Install Django GDPR Cookie Consent
 
 ### 1. Download and install the package with pip
 
@@ -11,8 +11,8 @@ Create a directory `private_wheels/` in your project's repository and add the wh
 Link to this file in your `requirements.txt`:
 
 ```
-Django==5.0
-file:./private_wheels/django_gdpr_cookie_consent-3.1.1-py2.py3-none-any.whl
+Django==5.2
+file:./private_wheels/django_gdpr_cookie_consent-3.2.0-py2.py3-none-any.whl
 ```
 
 Install the pip requirements from the `requirements.txt` file into your project's virtual environment:
@@ -24,7 +24,7 @@ Install the pip requirements from the `requirements.txt` file into your project'
 Alternatively to start quickly, install the wheel file into your Django project's virtual environment right from the shell:
 
 ```shell
-(venv)$ pip install /path/to/django_gdpr_cookie_consent-3.1.1-py2.py3-none-any.whl
+(venv)$ pip install /path/to/django_gdpr_cookie_consent-3.2.0-py2.py3-none-any.whl
 ```
 
 
@@ -33,7 +33,7 @@ Alternatively to start quickly, install the wheel file into your Django project'
 ```python
 INSTALLED_APPS = [
     # …
-    "gdpr_cookie_consent.apps.GdprCookieConsentConfig",
+    "gdpr_cookie_consent",
     # …
 ]
 ```
@@ -76,16 +76,13 @@ Link to the cookie management view, for example, in the website's footer:
 </a>
 ```
 
-
-## How to Use
-
-### 1. Copy, paste, and modify the cookie consent configuration
+### 5. Copy, paste, and modify the cookie consent configuration
 
 Copy the example of [`COOKIE_CONSENT_SETTINGS`](cookie-consent-settings.md) to the end of your project settings, then modify it to match the cookie usage of your website.
 
 In the example above, there are four cookie sections: __Essential__ (strictly necessary), __Functionality__ (optional), __Performance__ (optional), and __Marketing__ (optional).
 
-### 2. Create templates to render HTML for non-required cookies
+### 6. Create templates to render HTML for non-required cookies
 
 Cookies that are set conditionally based upon a visitor’s choices must be rendered from conditional templates. 
 
@@ -123,7 +120,15 @@ For testing, you can add the markup like:
 
 Manage the scripts that create your __Essential (strictly necessary)__ cookies separately, unrelated to conditional html snippets.
 
-### 3. Translate your titles and descriptions
+### 7. Check if your setup is correct
+
+Check the correctness of your configuration with:
+
+```shell
+(venv)$ python manage.py check gdpr_cookie_consent
+```
+
+### 8. Translate your titles and descriptions
 
 If your website has more than one language, prepare the translations:
 

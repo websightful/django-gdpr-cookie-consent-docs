@@ -10,8 +10,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [Unreleased]
 ------------
+...
 
-[v3.1.1] - 2024-12-30
+[v3.2.0] - 2025-04-04
+------------------
+
+### Added
+
+- Django system checks to check the validity of the `COOKIE_CONSENT_SETTINGS` configuration.
+- Django 5.2 support.
+
+### Removed
+
+- Dropped support for Python 3.6 and 3.7
+- Dropped support for Django 3.2, 4.0, and 4.1
+
+[v3.2.0] - 2024-12-30
 ------------------
 
 ### Fixed
@@ -22,7 +36,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CSS file refactored and optimized.
 
-[v3.1.1] - 2024-12-29
+[v3.1.0] - 2024-12-29
 ------------------
 
 ### Added

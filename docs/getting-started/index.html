@@ -191,6 +191,15 @@ urlpatterns = [
 <p>Check the correctness of your configuration with:</p>
 <pre><code class="language-shell">(venv)$ python manage.py check gdpr_cookie_consent
 </code></pre>
+<p>You will get errors about misconfigurations, for example:</p>
+<blockquote>
+<p>(gdpr_cookie_consent.E010) Section "essential" must have at least one provider.</p>
+</blockquote>
+<p>If your intention is to keep the configuration incomplete and Django GDPR Cookie Consent works as is, you can silence the errors by adding them to <code>SILENCED_SYSTEM_CHECKS</code> in the settings, e.g.:</p>
+<pre><code class="language-python">SILENCED_SYSTEM_CHECKS = [
+    &quot;gdpr_cookie_consent.E010&quot;,
+]
+</code></pre>
 <h3 id="8-translate-your-titles-and-descriptions">8. Translate your titles and descriptions</h3>
 <p>If your website has more than one language, prepare the translations:</p>
 <ul>

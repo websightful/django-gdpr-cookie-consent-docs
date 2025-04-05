@@ -128,6 +128,18 @@ Check the correctness of your configuration with:
 (venv)$ python manage.py check gdpr_cookie_consent
 ```
 
+You will get errors about misconfigurations, for example:
+
+> (gdpr\_cookie\_consent.E010) Section "essential" must have at least one provider.
+
+If your intention is to keep the configuration incomplete and Django GDPR Cookie Consent works as is, you can silence the errors by adding them to `SILENCED_SYSTEM_CHECKS` in the settings, e.g.:
+
+```python
+SILENCED_SYSTEM_CHECKS = [
+    "gdpr_cookie_consent.E010",
+]
+```
+
 ### 8. Translate your titles and descriptions
 
 If your website has more than one language, prepare the translations:

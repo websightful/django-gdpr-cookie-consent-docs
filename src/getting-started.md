@@ -12,7 +12,7 @@ Link to this file in your `requirements.txt`:
 
 ```
 Django==5.2
-file:./private_wheels/django_gdpr_cookie_consent-3.2.0-py2.py3-none-any.whl
+file:./private_wheels/django_gdpr_cookie_consent-3.2.1-py2.py3-none-any.whl
 ```
 
 Install the pip requirements from the `requirements.txt` file into your project's virtual environment:
@@ -24,7 +24,7 @@ Install the pip requirements from the `requirements.txt` file into your project'
 Alternatively to start quickly, install the wheel file into your Django project's virtual environment right from the shell:
 
 ```shell
-(venv)$ pip install /path/to/django_gdpr_cookie_consent-3.2.0-py2.py3-none-any.whl
+(venv)$ pip install /path/to/django_gdpr_cookie_consent-3.2.1-py2.py3-none-any.whl
 ```
 
 
@@ -122,7 +122,7 @@ Manage the scripts that create your __Essential (strictly necessary)__ cookies s
 
 ### 7. Check if your setup is correct
 
-Check the correctness of your configuration with:
+Check the correctness of your configuration with the following:
 
 ```shell
 (venv)$ python manage.py check gdpr_cookie_consent
@@ -130,15 +130,28 @@ Check the correctness of your configuration with:
 
 You will get errors about misconfigurations, for example:
 
-> (gdpr\_cookie\_consent.E010) Section "essential" must have at least one provider.
+> (gdpr\_cookie\_consent.E009) Section "essential" must have at least one provider.
 
 If your intention is to keep the configuration incomplete and Django GDPR Cookie Consent works as is, you can silence the errors by adding them to `SILENCED_SYSTEM_CHECKS` in the settings, e.g.:
 
 ```python
 SILENCED_SYSTEM_CHECKS = [
-    "gdpr_cookie_consent.E010",
+    "gdpr_cookie_consent.E009",
 ]
 ```
+
+Here is an overview of all errors with generalized descriptions:
+
+- **gdpr\_cookie\_consent.E001**: `COOKIE_CONSENT_SETTINGS` is not defined in the settings.
+- **gdpr\_cookie\_consent.E002**: `["base_template_name"]` is not defined in `COOKIE_CONSENT_SETTINGS`.
+- **gdpr\_cookie\_consent.E003**: Template defined in `["*_template_name"]` doesn't exist.
+- **gdpr\_cookie\_consent.E004**: You cannot set both, `["*"]` and `["*_template_name"]`.
+- **gdpr\_cookie\_consent.E005**: `["dialog_position"]` must be one of `"center"`, `"top"`, `"left"`, `"right"`, `"bottom"`.
+- **gdpr\_cookie\_consent.E006**: `["sections"]` must contain at least one section.
+- **gdpr\_cookie\_consent.E007**: Each section must have a `["slug"]` defined.
+- **gdpr\_cookie\_consent.E008**: Slugs for sections must be unique.
+- **gdpr\_cookie\_consent.E009**: `["providers"]` for each section must contain at least one provider.
+- **gdpr\_cookie\_consent.E010**: `["cookies"]` for each provider must contain at least one cookie.
 
 ### 8. Translate your titles and descriptions
 

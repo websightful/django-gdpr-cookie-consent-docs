@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ------------
 ...
 
+[v3.2.1] - 2025-04-06
+------------------
+
+### Changed
+
+- The error IDs for Django system checks revisited and generalized.
+- Added tag "gdpr_cookie_consent" for Django system checks.
+
 [v3.2.0] - 2025-04-04
 ------------------
 
@@ -25,7 +33,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dropped support for Python 3.6 and 3.7
 - Dropped support for Django 3.2, 4.0, and 4.1
 
-[v3.2.0] - 2024-12-30
+[v3.1.1] - 2024-12-30
 ------------------
 
 ### Fixed

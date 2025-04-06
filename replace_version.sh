@@ -11,6 +11,6 @@ if ! [[ $old_version =~ ^[0-9]+\.[0-9]+\.[0-9]+$ || $new_version =~ ^[0-9]+\.[0-
 fi
 
 # Replace versions in Markdown files
-find . -name "*.md" -not -name "CHANGELOG.md" -print0 | xargs -0 sed -i "" "s/$old_version/$new_version/g"
+find . -name "*.md" -not -name "changelog.md" -print0 | xargs -0 sed -i "" "s/$old_version/$new_version/g"
 
 echo "Replaced version $old_version with $new_version in all Markdown files."

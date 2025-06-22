@@ -149,11 +149,11 @@ document.addEventListener('changeGDPRCookieConsent', (e) => {
 Custom JavaScript events:
 
 `grantGDPRCookieConsent` and `denyGDPRCookieConsent` - triggered for each section individually when a user makes a choice.
-  - `e.detail.section`: slug of the section.
+   - `e.detail.section`: slug of the section.
 
 `changeGDPRCookieConsent` - triggered after all changes are saved.
-  - `e.detail.consentPreferences`: an object mapping section slugs to `true` or `false`.
-  - `e.detail.previousConsentPreferences`: preferences before the change - an object mapping section slugs to `true`, `false`, or `null`.
+   - `e.detail.consentPreferences`: an object mapping section slugs to `true` or `false`.
+   - `e.detail.previousConsentPreferences`: preferences before the change - an object mapping section slugs to `true`, `false`, or `null`.
 
 For example, these events can be used with [Google Consent Mode](use-case-google-consent-mode.md).
 

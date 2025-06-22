@@ -6,11 +6,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-
-
 [Unreleased]
 ------------
 ...
+
+[v4.0.0] - 2025-06-22
+------------------
+
+### Added
+
+- Custom JavaScript events `grantGDPRCookieConsent`, `denyGDPRCookieConsent`, and `changeGDPRCookieConsent`.
+
+### Changed
+
+- Conditional templates are not required (and system checks can be silenced).
+- Conditional templates are loaded even on cookie management page.
+
+### Fixed
+
+- Scrolling within the dialog for small screens fixed.
+
+### Removed
+
+- The `redirect_url` setting removed. After saving the cookie management form, the consent is activated for the same page.
 
 [v3.2.1] - 2025-04-06
 ------------------

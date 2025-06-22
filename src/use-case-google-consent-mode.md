@@ -17,7 +17,23 @@ This guide helps you respect user privacy while using Google services. When a us
 
 ### Prepare the Django Settings:
 
-In your Django settings, prepare `performance` and `marketing` sections in `COOKIE_CONSENT_SETTINGS`:
+Add `gdpr_cookie_consent` to context processors in your Django settings:
+
+```python
+TEMPLATES = [
+    {
+        # …
+        "OPTIONS": {
+            "context_processors": [
+                # …
+                "gdpr_cookie_consent.context_processors.gdpr_cookie_consent",
+            ],
+        },
+    },
+]
+```
+
+Also prepare `performance` and `marketing` sections in `COOKIE_CONSENT_SETTINGS`:
 
 ```python
 from django.utils.translation import gettext_lazy as _
@@ -27,7 +43,6 @@ COOKIE_CONSENT_SETTINGS = {
     "description_template_name": "gdpr_cookie_consent/descriptions/what_are_cookies.html",
     "dialog_position": "center",
     "consent_cookie_max_age": 60 * 60 * 24 * 30 * 6,
-    "redirect_url": "/",
     "sections": [
         {
             "slug": "essential",
@@ -71,7 +86,6 @@ COOKIE_CONSENT_SETTINGS = {
         {
             "slug": "performance",
             "title": _("Performance Cookies"),
-            "conditional_html_template_name": "conditional_html/performance.html",
             "required": False,
             "summary": _(
                 "These cookies help us analyse how many people are using this website, where they come from and how they're using it. If you opt out of these cookies, we can’t get feedback to make this website better for you and all our users."),
@@ -118,7 +132,6 @@ COOKIE_CONSENT_SETTINGS = {
         {
             "slug": "marketing",
             "title": _("Marketing Cookies"),
-            "conditional_html_template_name": "conditional_html/marketing.html",
             "required": False,
             "summary": _(
                 "These cookies are set by our advertising partners to track your activity and show you relevant ads on other sites as you browse the internet."),
@@ -245,24 +258,23 @@ COOKIE_CONSENT_SETTINGS = {
 Add these two scripts in the `<head>` section:
 
 ```html
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-
-  // Default: deny everything (except required)
-  gtag('consent', 'default', {
-    'analytics_storage': 'denied',
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'functionality_storage': 'denied',
-    'personalization_storage': 'denied',
-    'security_storage': 'granted'  // usually okay to grant by default
-  });
+<script nonce="{{ request.csp_nonce }}">
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   
+   gtag('consent', 'default', {
+      'analytics_storage': '{% if "performance" in cookie_consent_controller.checked_sections %}granted{% else %}denied{% endif %}',
+      'ad_storage': '{% if "marketing" in cookie_consent_controller.checked_sections %}granted{% else %}denied{% endif %}',
+      'ad_user_data': '{% if "marketing" in cookie_consent_controller.checked_sections %}granted{% else %}denied{% endif %}',
+      'ad_personalization': '{% if "marketing" in cookie_consent_controller.checked_sections %}granted{% else %}denied{% endif %}',
+      'functionality_storage': 'denied',
+      'personalization_storage': 'denied',
+      'security_storage': 'granted'  // usually okay to grant by default
+   });
 </script>
 
 <!-- Google Tag Manager (head) -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+<script nonce="{{ request.csp_nonce }}">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -286,45 +298,45 @@ Add the modal dialog of **Django GDPR Cookie Consent** at the end of the `<body>
 
 Replace `GTM-XXXXXXX` with your real GTM container ID.
 
-## 2. Create Consent-Based Snippets (Only Loaded When User Accepts)
+## 2. Create JavaScript custom event handlers for granding and denying consent
 
-Inside your Django project:
+In a JavaScript file that is included in your base template, add these custom event handlers:
 
-Create the folder for your conditional snippets that will be included based on cookie consent:
+```javascript
+document.addEventListener('grantGDPRCookieConsent', (e) => {
+    console.log(`${e.detail.section} cookies granted`);
+    if (e.detail.section === 'performance') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+        });
+        dataLayer.push({'event': 'analytics_consent_granted'});
+    } else if (e.detail.section === 'marketing') {
+        gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+        });
+        dataLayer.push({'event': 'marketing_consent_granted'});
+    }
+});
 
+document.addEventListener('denyGDPRCookieConsent', (e) => {
+    console.log(`${e.detail.section} cookies denied`);
+    if (e.detail.section === 'performance') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'denied'
+        });
+        dataLayer.push({'event': 'analytics_consent_denied'});
+    } else if (e.detail.section === 'marketing') {
+        gtag('consent', 'update', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+        dataLayer.push({'event': 'marketing_consent_denied'});
+    }
+});
 ```
-templates/gdpr_cookie_consent/conditional_html/
-```
-
-Then create these files:
-
-### `performance.html` (for Google Analytics 4)
-
-```html
-<script>
-  gtag('consent', 'update', {
-    'analytics_storage': 'granted'
-  });
-  dataLayer.push({'event': 'analytics_consent_granted'});
-</script>
-```
-
-### `marketing.html` (for Facebook Pixel, Google Ads, and alike)
-
-```html
-<script>
-  gtag('consent', 'update', {
-    'ad_storage': 'granted',
-    'ad_user_data': 'granted',
-    'ad_personalization': 'granted'
-  });
-  dataLayer.push({'event': 'marketing_consent_granted'});
-</script>
-```
-
-These snippets only render when the user accepts the respective cookie group. That’s the beauty of `django-gdpr-cookie-consent`.
-
-Here’s a rewritten version of that section, now clearer for someone new to Google Tag Manager (GTM), with extra context to help them understand what's happening and why:
 
 ## 3. Set Up GTM to React to Consent
 
@@ -386,13 +398,14 @@ This setup ensures your custom script only runs if the user actively agrees to m
 
 ### Use GTM’s Preview Mode:
 
-1. Enable Preview in GTM.
+1. [Enable Preview in GTM](https://tagassistant.google.com/).
 2. Visit your site.
 3. Accept cookies.
 4. You should see these events:
    * `analytics_consent_granted` → GA4 tag should fire.
    * `marketing_consent_granted` → Facebook tag should fire.
 5. Check which tags fired — they should match the user’s choices.
+6. The Consent tab of each event should show the correct preferred consent choices.
 
 ### Use Browser's Developer Tools:
 
@@ -412,3 +425,5 @@ Now your Django site is:
 ## Next Steps
 
 If you add more scripts via **Google Tag Manager** in the future, make sure that you list all the cookies that these scripts create, in the `COOKIE_CONSENT_SETTINGS`.
+
+For more information, check this article about [EU-focused data and privacy using Google Analytics](https://support.google.com/analytics/answer/12017362?hl=en).

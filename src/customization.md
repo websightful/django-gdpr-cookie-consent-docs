@@ -37,7 +37,7 @@ Button texts can be cusomized by the `buttons` setting:
 
 The modal dialog uses the fonts of the website.
 
-Colors can be modified by CSS custom properties:
+Colors and margins can be modified by CSS custom properties:
 
 ```css
 body {
@@ -46,6 +46,10 @@ body {
   --cc-dark-gray: #343a40;
   --cc-light: #fff;
   --cc-backdrop: rgba(0, 0, 0, 0.5);
+  /* dialog margin correction so that the dialog stretches to the full height or width */
+  --cc-dialog-margin-correction: -15px;
+  /* top margin for the page scroll position when static headers are used */
+  --cc-page-scroll-buffer: 0;
 }
 ```
 
@@ -90,14 +94,6 @@ If you don't want to hardcode some variables like API keys in the conditional HT
 In this example, `get_secret()` should be a function implemented by you, that reads the secret values from the environment variables, unversioned `secrets.json` file, or elsewhere.
 
 The variables mentioned in `extra_context` will be passed to all templates of Django GDPR Cookie Consent.
-
-## Customisable Redirect URL
-
-After successfully saving the cookie management form, you will be redirected to the start page. To change that, use the `"redirect_url"` setting at `COOKIE_CONSENT_SETTINGS`. It accepts a path name, a hardcoded path, or a full URL:
-
-```python
-"redirect_url": "home",
-```
 
 ## Conditional Rendering in Templates
 

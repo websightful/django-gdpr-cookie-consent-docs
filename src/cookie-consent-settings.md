@@ -61,10 +61,6 @@ COOKIE_CONSENT_SETTINGS = {
     # For example, it can be approximately six months
     "consent_cookie_max_age": 60 * 60 * 24 * 30 * 6,
 
-    # Page URL, path, or path name you are redirected to after saving cookie settings.
-    # For example: "home", "/", or "https://example.com"
-    "redirect_url": "/",
-
     # Sections define the purposes of cookie groups.
     # For example: Essential, Functionality, Performance, and Marketing
     "sections": [
@@ -149,7 +145,7 @@ COOKIE_CONSENT_SETTINGS = {
             "slug": "functionality",
             "title": _("Functionality Cookies"),
 
-            # Conditional HTML snippet will be loaded or rendered if this section is selected
+            # Conditional HTML snippet will be loaded or rendered if this section is selected (optional)
             "conditional_html_template_name": "conditional_html/functionality.html",
             "required": False,
             "summary": _(

@@ -16,4 +16,5 @@ nav:
     - 'More':
         - Settings Example: 'cookie-consent-settings.md'
         - Changelog: 'changelog.md'
+        - 'Use Case: Google Consent Mode': 'use-case-google-consent-mode.md'
         - License: 'license.md'

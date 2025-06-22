@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,15 +10,16 @@
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Customization - Django GDPR Cookie Consent</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
         <link href="../css/style.css" rel="stylesheet">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -26,7 +27,7 @@
             <div class="container">
                 <a class="navbar-brand" href="..">Django GDPR Cookie Consent</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -34,17 +35,17 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../getting-started/" class="nav-link">Getting Started</a>
                             </li>
-                            <li class="navitem active">
-                                <a href="./" class="nav-link">Customization</a>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Customization</a>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">More</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -56,15 +57,19 @@
 </li>
                                     
 <li>
+    <a href="../use-case-google-consent-mode/" class="dropdown-item">Use Case: Google Consent Mode</a>
+</li>
+                                    
+<li>
     <a href="../license/" class="dropdown-item">License</a>
 </li>
                                 </ul>
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -88,56 +93,52 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#customization" class="nav-link">Customization</a>
+            <li class="nav-item" data-bs-level="1"><a href="#customization" class="nav-link">Customization</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#descriptions" class="nav-link">Descriptions</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#layout-options" class="nav-link">Layout options</a>
+            <li class="nav-item" data-bs-level="2"><a href="#descriptions" class="nav-link">Descriptions</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#button-texts" class="nav-link">Button texts</a>
+            <li class="nav-item" data-bs-level="2"><a href="#layout-options" class="nav-link">Layout options</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#styling" class="nav-link">Styling</a>
+            <li class="nav-item" data-bs-level="2"><a href="#button-texts" class="nav-link">Button texts</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#templates" class="nav-link">Templates</a>
+            <li class="nav-item" data-bs-level="2"><a href="#styling" class="nav-link">Styling</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#passing-variables-to-cookie-consent-management-templates" class="nav-link">Passing Variables to Cookie Consent Management Templates</a>
+            <li class="nav-item" data-bs-level="2"><a href="#templates" class="nav-link">Templates</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#customisable-redirect-url" class="nav-link">Customisable Redirect URL</a>
+            <li class="nav-item" data-bs-level="2"><a href="#passing-variables-to-cookie-consent-management-templates" class="nav-link">Passing Variables to Cookie Consent Management Templates</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#conditional-rendering-in-templates" class="nav-link">Conditional Rendering in Templates</a>
+            <li class="nav-item" data-bs-level="2"><a href="#conditional-rendering-in-templates" class="nav-link">Conditional Rendering in Templates</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#conditional-rendering-in-javascript" class="nav-link">Conditional Rendering in JavaScript</a>
+            <li class="nav-item" data-bs-level="2"><a href="#conditional-rendering-in-javascript" class="nav-link">Conditional Rendering in JavaScript</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#using-content-security-policy-with-django-csp" class="nav-link">Using Content-Security-Policy with Django-CSP</a>
+            <li class="nav-item" data-bs-level="2"><a href="#using-content-security-policy-with-django-csp" class="nav-link">Using Content-Security-Policy with Django-CSP</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -176,13 +177,17 @@
 </code></pre>
 <h2 id="styling">Styling</h2>
 <p>The modal dialog uses the fonts of the website.</p>
-<p>Colors can be modified by CSS custom properties:</p>
+<p>Colors and margins can be modified by CSS custom properties:</p>
 <pre><code class="language-css">body {
   --cc-primary: #007bff;
   --cc-light-gray: #ccc;
   --cc-dark-gray: #343a40;
   --cc-light: #fff;
   --cc-backdrop: rgba(0, 0, 0, 0.5);
+  /* dialog margin correction so that the dialog stretches to the full height or width */
+  --cc-dialog-margin-correction: -15px;
+  /* top margin for the page scroll position when static headers are used */
+  --cc-page-scroll-buffer: 0;
 }
 </code></pre>
 <p>All essential elements have CSS classes with <code>cc-</code> prefix, and you can overwrite some of their properties.</p>
@@ -215,10 +220,6 @@
 </code></pre>
 <p>In this example, <code>get_secret()</code> should be a function implemented by you, that reads the secret values from the environment variables, unversioned <code>secrets.json</code> file, or elsewhere.</p>
 <p>The variables mentioned in <code>extra_context</code> will be passed to all templates of Django GDPR Cookie Consent.</p>
-<h2 id="customisable-redirect-url">Customisable Redirect URL</h2>
-<p>After successfully saving the cookie management form, you will be redirected to the start page. To change that, use the <code>"redirect_url"</code> setting at <code>COOKIE_CONSENT_SETTINGS</code>. It accepts a path name, a hardcoded path, or a full URL:</p>
-<pre><code class="language-python">&quot;redirect_url&quot;: &quot;home&quot;,
-</code></pre>
 <h2 id="conditional-rendering-in-templates">Conditional Rendering in Templates</h2>
 <p>Enable <code>gdpr_cookie_consent</code> context processor in the template settings:</p>
 <pre><code class="language-python">TEMPLATES = [
@@ -275,19 +276,20 @@ if (window.ENABLE_YOUTUBE_EMBEDS) {
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>From here you can search these documents. Enter your search terms below.</p>
@@ -307,7 +309,7 @@ if (window.ENABLE_YOUTUBE_EMBEDS) {
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">

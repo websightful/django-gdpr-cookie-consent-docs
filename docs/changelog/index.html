@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="light">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,15 +10,16 @@
         <link rel="shortcut icon" href="../img/favicon.ico">
         <title>Changelog - Django GDPR Cookie Consent</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
         <link href="../css/style.css" rel="stylesheet">
-
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script> 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
     </head>
 
     <body>
@@ -26,7 +27,7 @@
             <div class="container">
                 <a class="navbar-brand" href="..">Django GDPR Cookie Consent</a>
                 <!-- Expander button -->
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -34,17 +35,17 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href=".." class="nav-link">Home</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../getting-started/" class="nav-link">Getting Started</a>
                             </li>
-                            <li class="navitem">
+                            <li class="nav-item">
                                 <a href="../customization/" class="nav-link">Customization</a>
                             </li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">More <b class="caret"></b></a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">More</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -52,7 +53,11 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Changelog</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Changelog</a>
+</li>
+                                    
+<li>
+    <a href="../use-case-google-consent-mode/" class="dropdown-item">Use Case: Google Consent Mode</a>
 </li>
                                     
 <li>
@@ -62,9 +67,9 @@
                             </li>
                         </ul>
 
-                    <ul class="nav navbar-nav ml-auto">
+                    <ul class="nav navbar-nav ms-md-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
@@ -74,7 +79,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../license/" class="nav-link">
+                                <a rel="next" href="../use-case-google-consent-mode/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -88,140 +93,144 @@
 
         <div class="container">
             <div class="row">
-                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
             <span class="fa fa-angle-down"></span>
         </button>
     </div>
 
     
-    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#changelog" class="nav-link">Changelog</a>
+            <li class="nav-item" data-bs-level="1"><a href="#changelog" class="nav-link">Changelog</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#unreleased" class="nav-link">[Unreleased]</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#v321-2025-04-06" class="nav-link">[v3.2.1] - 2025-04-06</a>
+            <li class="nav-item" data-bs-level="2"><a href="#unreleased" class="nav-link">[Unreleased]</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v320-2025-04-04" class="nav-link">[v3.2.0] - 2025-04-04</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v400-2025-06-22" class="nav-link">[v4.0.0] - 2025-06-22</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v311-2024-12-30" class="nav-link">[v3.1.1] - 2024-12-30</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v321-2025-04-06" class="nav-link">[v3.2.1] - 2025-04-06</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v310-2024-12-29" class="nav-link">[v3.1.0] - 2024-12-29</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v320-2025-04-04" class="nav-link">[v3.2.0] - 2025-04-04</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v300-2024-12-29" class="nav-link">[v3.0.0] - 2024-12-29</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v311-2024-12-30" class="nav-link">[v3.1.1] - 2024-12-30</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v231-2024-08-09" class="nav-link">[v2.3.1] - 2024-08-09</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v310-2024-12-29" class="nav-link">[v3.1.0] - 2024-12-29</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v230-2024-08-09" class="nav-link">[v2.3.0] - 2024-08-09</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v300-2024-12-29" class="nav-link">[v3.0.0] - 2024-12-29</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v221-2024-07-31" class="nav-link">[v2.2.1] - 2024-07-31</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v231-2024-08-09" class="nav-link">[v2.3.1] - 2024-08-09</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v220-2024-03-08" class="nav-link">[v2.2.0] - 2024-03-08</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v230-2024-08-09" class="nav-link">[v2.3.0] - 2024-08-09</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v210-2023-04-07" class="nav-link">[v2.1.0] - 2023-04-07</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v221-2024-07-31" class="nav-link">[v2.2.1] - 2024-07-31</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v201-2022-10-31" class="nav-link">[v2.0.1] - 2022-10-31</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v220-2024-03-08" class="nav-link">[v2.2.0] - 2024-03-08</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v200-2022-10-31" class="nav-link">[v2.0.0] - 2022-10-31</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v210-2023-04-07" class="nav-link">[v2.1.0] - 2023-04-07</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v121-2022-09-14" class="nav-link">[v1.2.1] - 2022-09-14</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v201-2022-10-31" class="nav-link">[v2.0.1] - 2022-10-31</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v120-2022-08-07" class="nav-link">[v1.2.0] - 2022-08-07</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v200-2022-10-31" class="nav-link">[v2.0.0] - 2022-10-31</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v110-2021-12-17" class="nav-link">[v1.1.0] - 2021-12-17</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v121-2022-09-14" class="nav-link">[v1.2.1] - 2022-09-14</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v100-2021-11-15" class="nav-link">[v1.0.0] - 2021-11-15</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v120-2022-08-07" class="nav-link">[v1.2.0] - 2022-08-07</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v032-2021-11-14" class="nav-link">[v0.3.2] - 2021-11-14</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v110-2021-12-17" class="nav-link">[v1.1.0] - 2021-12-17</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v031-2021-11-12" class="nav-link">[v0.3.1] - 2021-11-12</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v100-2021-11-15" class="nav-link">[v1.0.0] - 2021-11-15</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v030-2021-11-12" class="nav-link">[v0.3.0] - 2021-11-12</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v032-2021-11-14" class="nav-link">[v0.3.2] - 2021-11-14</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v024-2021-11-02" class="nav-link">[v0.2.4] - 2021-11-02</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v031-2021-11-12" class="nav-link">[v0.3.1] - 2021-11-12</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v023-2021-11-01" class="nav-link">[v0.2.3] - 2021-11-01</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v030-2021-11-12" class="nav-link">[v0.3.0] - 2021-11-12</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v022-2021-11-01" class="nav-link">[v0.2.2] - 2021-11-01</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v024-2021-11-02" class="nav-link">[v0.2.4] - 2021-11-02</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v021-2021-10-27" class="nav-link">[v0.2.1] - 2021-10-27</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v023-2021-11-01" class="nav-link">[v0.2.3] - 2021-11-01</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v020-2021-10-27" class="nav-link">[v0.2.0] - 2021-10-27</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v022-2021-11-01" class="nav-link">[v0.2.2] - 2021-11-01</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v0111-2021-10-24" class="nav-link">[v0.1.11] - 2021-10-24</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v021-2021-10-27" class="nav-link">[v0.2.1] - 2021-10-27</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v018-2021-10-24" class="nav-link">[v0.1.8] - 2021-10-24</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v020-2021-10-27" class="nav-link">[v0.2.0] - 2021-10-27</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v016-2021-10-23" class="nav-link">[v0.1.6] - 2021-10-23</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v0111-2021-10-24" class="nav-link">[v0.1.11] - 2021-10-24</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v015-2021-10-23" class="nav-link">[v0.1.5] - 2021-10-23</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v018-2021-10-24" class="nav-link">[v0.1.8] - 2021-10-24</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v014-2021-10-23" class="nav-link">[v0.1.4] - 2021-10-23</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v016-2021-10-23" class="nav-link">[v0.1.6] - 2021-10-23</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#v012-2021-10-23" class="nav-link">[v0.1.2] - 2021-10-23</a>
+            <li class="nav-item" data-bs-level="2"><a href="#v015-2021-10-23" class="nav-link">[v0.1.5] - 2021-10-23</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#v014-2021-10-23" class="nav-link">[v0.1.4] - 2021-10-23</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#v012-2021-10-23" class="nav-link">[v0.1.2] - 2021-10-23</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -238,89 +247,107 @@
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="unreleased">[Unreleased]</h2>
 <p>...</p>
-<h2 id="v321-2025-04-06">[v3.2.1] - 2025-04-06</h2>
+<h2 id="v400-2025-06-22">[v4.0.0] - 2025-06-22</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>Custom JavaScript events <code>grantGDPRCookieConsent</code>, <code>denyGDPRCookieConsent</code>, and <code>changeGDPRCookieConsent</code>.</li>
+</ul>
 <h3 id="changed">Changed</h3>
+<ul>
+<li>Conditional templates are not required (and system checks can be silenced).</li>
+<li>Conditional templates are loaded even on cookie management page.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Scrolling within the dialog for small screens fixed.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>The <code>redirect_url</code> setting removed. After saving the cookie management form, the consent is activated for the same page.</li>
+</ul>
+<h2 id="v321-2025-04-06">[v3.2.1] - 2025-04-06</h2>
+<h3 id="changed_1">Changed</h3>
 <ul>
 <li>The error IDs for Django system checks revisited and generalized.</li>
 <li>Added tag "gdpr_cookie_consent" for Django system checks.</li>
 </ul>
 <h2 id="v320-2025-04-04">[v3.2.0] - 2025-04-04</h2>
-<h3 id="added">Added</h3>
+<h3 id="added_1">Added</h3>
 <ul>
 <li>Django system checks to check the validity of the <code>COOKIE_CONSENT_SETTINGS</code> configuration.</li>
 <li>Django 5.2 support.</li>
 </ul>
-<h3 id="removed">Removed</h3>
+<h3 id="removed_1">Removed</h3>
 <ul>
 <li>Dropped support for Python 3.6 and 3.7</li>
 <li>Dropped support for Django 3.2, 4.0, and 4.1</li>
 </ul>
 <h2 id="v311-2024-12-30">[v3.1.1] - 2024-12-30</h2>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed_1">Fixed</h3>
 <ul>
 <li>SCSS file updated.</li>
 </ul>
-<h3 id="changed_1">Changed</h3>
+<h3 id="changed_2">Changed</h3>
 <ul>
 <li>CSS file refactored and optimized.</li>
 </ul>
 <h2 id="v310-2024-12-29">[v3.1.0] - 2024-12-29</h2>
-<h3 id="added_1">Added</h3>
+<h3 id="added_2">Added</h3>
 <ul>
 <li>CSS variable <code>--cc-dialog-margin-correction</code> introduced for dialog margin corrections.</li>
 </ul>
 <h2 id="v300-2024-12-29">[v3.0.0] - 2024-12-29</h2>
-<h3 id="added_2">Added</h3>
+<h3 id="added_3">Added</h3>
 <ul>
 <li>Python 3.13 support.</li>
 <li>Accessibility attributes added to all widgets.</li>
 <li>Added settings <code>close_button_css_classes</code> and <code>redirect_url</code>.</li>
 </ul>
-<h3 id="changed_2">Changed</h3>
+<h3 id="changed_3">Changed</h3>
 <ul>
 <li>Improved keyboard accessibility.</li>
 <li>Improved styling.</li>
 <li>README updated.</li>
 </ul>
-<h3 id="removed_1">Removed</h3>
+<h3 id="removed_2">Removed</h3>
 <ul>
 <li>Dropped support for Python 3.5</li>
 <li>Dropped support for Django 2.2, 3.0, and 3.1</li>
 </ul>
 <h2 id="v231-2024-08-09">[v2.3.1] - 2024-08-09</h2>
-<h3 id="changed_3">Changed</h3>
+<h3 id="changed_4">Changed</h3>
 <ul>
 <li>Classifiers updated at setup.py.</li>
 <li>README updated.</li>
 </ul>
 <h2 id="v230-2024-08-09">[v2.3.0] - 2024-08-09</h2>
-<h3 id="changed_4">Changed</h3>
+<h3 id="changed_5">Changed</h3>
 <ul>
 <li>Django 5.1 support.</li>
 </ul>
 <h2 id="v221-2024-07-31">[v2.2.1] - 2024-07-31</h2>
-<h3 id="fixed_1">Fixed</h3>
+<h3 id="fixed_2">Fixed</h3>
 <ul>
 <li>Required sections don't attempt to include conditional templates.</li>
 </ul>
 <h2 id="v220-2024-03-08">[v2.2.0] - 2024-03-08</h2>
-<h3 id="added_3">Added</h3>
+<h3 id="added_4">Added</h3>
 <ul>
 <li>Django 5.0 support.</li>
 <li>Python 3.9, 3.10, 3.11, 3.12 support.</li>
 </ul>
 <h2 id="v210-2023-04-07">[v2.1.0] - 2023-04-07</h2>
-<h3 id="added_4">Added</h3>
+<h3 id="added_5">Added</h3>
 <ul>
 <li>Django 4.2 support.</li>
 </ul>
 <h2 id="v201-2022-10-31">[v2.0.1] - 2022-10-31</h2>
-<h3 id="fixed_2">Fixed</h3>
+<h3 id="fixed_3">Fixed</h3>
 <ul>
 <li>Python 3.5, 3.6, 3.7, 3.8 support.</li>
 </ul>
 <h2 id="v200-2022-10-31">[v2.0.0] - 2022-10-31</h2>
-<h3 id="added_5">Added</h3>
+<h3 id="added_6">Added</h3>
 <ul>
 <li>Button text customization.</li>
 <li>Possibility to preselect a section in configuration.</li>
@@ -328,105 +355,105 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Python 3.11 support.</li>
 <li>Dialog position configurations: center, top, left, right, bottom.</li>
 </ul>
-<h3 id="changed_5">Changed</h3>
+<h3 id="changed_6">Changed</h3>
 <ul>
 <li>Dialog close button made optional and not shown by default.</li>
 </ul>
 <h2 id="v121-2022-09-14">[v1.2.1] - 2022-09-14</h2>
-<h3 id="added_6">Added</h3>
+<h3 id="added_7">Added</h3>
 <ul>
 <li>Pointer cursor for "Show cookie providers".</li>
 </ul>
-<h3 id="fixed_3">Fixed</h3>
+<h3 id="fixed_4">Fixed</h3>
 <ul>
 <li>gettext_lazy usage in the settings.</li>
 </ul>
 <h2 id="v120-2022-08-07">[v1.2.0] - 2022-08-07</h2>
-<h3 id="added_7">Added</h3>
+<h3 id="added_8">Added</h3>
 <ul>
 <li>Django 4.1 support.</li>
 </ul>
 <h2 id="v110-2021-12-17">[v1.1.0] - 2021-12-17</h2>
-<h3 id="added_8">Added</h3>
+<h3 id="added_9">Added</h3>
 <ul>
 <li>Django 4.0 support.</li>
 </ul>
 <h2 id="v100-2021-11-15">[v1.0.0] - 2021-11-15</h2>
-<h3 id="added_9">Added</h3>
+<h3 id="added_10">Added</h3>
 <ul>
 <li>Python 3.9 and 3.10 support.</li>
 </ul>
 <h2 id="v032-2021-11-14">[v0.3.2] - 2021-11-14</h2>
-<h3 id="fixed_4">Fixed</h3>
+<h3 id="fixed_5">Fixed</h3>
 <ul>
 <li>More spacious layout for the modal dialog on mobile screens.</li>
 </ul>
 <h2 id="v031-2021-11-12">[v0.3.1] - 2021-11-12</h2>
-<h3 id="fixed_5">Fixed</h3>
+<h3 id="fixed_6">Fixed</h3>
 <ul>
 <li>The styling for the modal dialog close button fixed for mobile Chrome and Safari.</li>
 </ul>
 <h2 id="v030-2021-11-12">[v0.3.0] - 2021-11-12</h2>
-<h3 id="added_10">Added</h3>
+<h3 id="added_11">Added</h3>
 <ul>
 <li>Content-Security-Policy is supported: you can use Django-CSP with nonces for inline scripts and styles.</li>
 </ul>
 <h2 id="v024-2021-11-02">[v0.2.4] - 2021-11-02</h2>
-<h3 id="added_11">Added</h3>
+<h3 id="added_12">Added</h3>
 <ul>
 <li>HTML ids added for switch widgets for easier testability.</li>
 </ul>
 <h2 id="v023-2021-11-01">[v0.2.3] - 2021-11-01</h2>
-<h3 id="fixed_6">Fixed</h3>
+<h3 id="fixed_7">Fixed</h3>
 <ul>
 <li>Modal dialog submission fix for Safari.</li>
 </ul>
 <h2 id="v022-2021-11-01">[v0.2.2] - 2021-11-01</h2>
-<h3 id="fixed_7">Fixed</h3>
+<h3 id="fixed_8">Fixed</h3>
 <ul>
 <li>Multiple <code>&lt;script&gt;</code> loading in the conditional snippets fixed.</li>
 </ul>
 <h2 id="v021-2021-10-27">[v0.2.1] - 2021-10-27</h2>
-<h3 id="changed_6">Changed</h3>
+<h3 id="changed_7">Changed</h3>
 <ul>
 <li>Modal dialog centered vertically and horizontally.</li>
 </ul>
 <h2 id="v020-2021-10-27">[v0.2.0] - 2021-10-27</h2>
-<h3 id="added_12">Added</h3>
+<h3 id="added_13">Added</h3>
 <ul>
 <li>Logging the cookie consent choices in the database because of the legal requirements.</li>
 </ul>
-<h3 id="fixed_8">Fixed</h3>
+<h3 id="fixed_9">Fixed</h3>
 <ul>
 <li>Disabling the buttons while saving the Cookie Choices so that they are not triggered more than once with slow Internet connections.</li>
 </ul>
 <h2 id="v0111-2021-10-24">[v0.1.11] - 2021-10-24</h2>
-<h3 id="fixed_9">Fixed</h3>
+<h3 id="fixed_10">Fixed</h3>
 <ul>
 <li>Styling of the switches.</li>
 </ul>
 <h2 id="v018-2021-10-24">[v0.1.8] - 2021-10-24</h2>
-<h3 id="fixed_10">Fixed</h3>
+<h3 id="fixed_11">Fixed</h3>
 <ul>
 <li>Styling for the modal dialog close button.</li>
 </ul>
 <h2 id="v016-2021-10-23">[v0.1.6] - 2021-10-23</h2>
-<h3 id="removed_2">Removed</h3>
+<h3 id="removed_3">Removed</h3>
 <ul>
 <li>Samesite functionality.</li>
 </ul>
 <h2 id="v015-2021-10-23">[v0.1.5] - 2021-10-23</h2>
-<h3 id="added_13">Added</h3>
+<h3 id="added_14">Added</h3>
 <ul>
 <li>Default extra.html template.</li>
 </ul>
 <h2 id="v014-2021-10-23">[v0.1.4] - 2021-10-23</h2>
-<h3 id="fixed_11">Fixed</h3>
+<h3 id="fixed_12">Fixed</h3>
 <ul>
 <li>bump2version configuration.</li>
 </ul>
 <h2 id="v012-2021-10-23">[v0.1.2] - 2021-10-23</h2>
-<h3 id="added_14">Added</h3>
+<h3 id="added_15">Added</h3>
 <ul>
 <li>Initial commit.</li>
 </ul>
@@ -445,19 +472,20 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
             <hr>
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
         <script>
             var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="searchModalLabel">Search</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>From here you can search these documents. Enter your search terms below.</p>
@@ -477,7 +505,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <table class="table">

@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <meta name="author" content="Aidas Bendoraitis a.k.a. archatas / DjangoTricks">
-        <link rel="canonical" href="https://websightful.github.io/django-gdpr-cookie-consent-docs/cookie-consent-settings/">
+        <link rel="canonical" href="https://websightful.github.io/django-gdpr-cookie-consent-docs/use-case-google-consent-mode/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Settings Example - Django GDPR Cookie Consent</title>
+        <title>Use Case: Google Consent Mode - Django GDPR Cookie Consent</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -49,7 +49,7 @@
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="./" class="dropdown-item active" aria-current="page">Settings Example</a>
+    <a href="../cookie-consent-settings/" class="dropdown-item">Settings Example</a>
 </li>
                                     
 <li>
@@ -57,7 +57,7 @@
 </li>
                                     
 <li>
-    <a href="../use-case-google-consent-mode/" class="dropdown-item">Use Case: Google Consent Mode</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Use Case: Google Consent Mode</a>
 </li>
                                     
 <li>
@@ -74,12 +74,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../customization/" class="nav-link">
+                                <a rel="prev" href="../changelog/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../changelog/" class="nav-link">
+                                <a rel="next" href="../license/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -104,8 +104,36 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-bs-level="1"><a href="#the-example-of-cookie-consent-settings" class="nav-link">The Example of Cookie Consent Settings</a>
+            <li class="nav-item" data-bs-level="1"><a href="#use-case-django-gdpr-cookie-consent-with-google-consent-mode-and-google-tag-manager" class="nav-link">Use Case: Django GDPR Cookie Consent with Google Consent Mode and Google Tag Manager</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#what-youll-need" class="nav-link">What You’ll Need</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#1-setup-django-cookie-groups-gtm-snippets" class="nav-link">1. Setup Django Cookie Groups &amp; GTM Snippets</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-create-javascript-custom-event-handlers-for-granding-and-denying-consent" class="nav-link">2. Create JavaScript custom event handlers for granding and denying consent</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-set-up-gtm-to-react-to-consent" class="nav-link">3. Set Up GTM to React to Consent</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-test-and-debug" class="nav-link">4. Test and Debug</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#youre-done" class="nav-link">You’re Done!</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#next-steps" class="nav-link">Next Steps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -113,125 +141,58 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="the-example-of-cookie-consent-settings">The Example of Cookie Consent Settings</h1>
-<p>Copy this to your project's settings and modify according to your website's needs:</p>
+<h1 id="use-case-django-gdpr-cookie-consent-with-google-consent-mode-and-google-tag-manager">Use Case: Django GDPR Cookie Consent with Google Consent Mode and Google Tag Manager</h1>
+<p>This guide helps you respect user privacy while using Google services. When a user accepts cookies, we’ll update <strong>Google Consent Mode</strong> via <strong>Google Tag Manager (GTM)</strong> using <strong>Django GDPR Cookie Consent</strong>.</p>
+<p><strong>Google Tag Manager (GTM)</strong> is a web-based console provided by Google where you manage all your tracking tags (like Google Analytics, Facebook Pixel, etc.) from one place. You add just one GTM snippet to your website, and then control what gets loaded through the GTM interface — no need to constantly update your site’s code.</p>
+<p><strong>Google Consent Mode</strong> is a JavaScript-based API that runs on your website. It lets you tell Google services whether the user has granted permission for tracking (like analytics or advertising). Based on the user's choices, it adjusts how data is collected — for example, sending anonymized data if the user declined cookies.</p>
+<h2 id="what-youll-need">What You’ll Need</h2>
+<ul>
+<li><code>django-gdpr-cookie-consent</code> is installed and working.</li>
+<li>You’ve added a GTM container to your site.</li>
+<li>You know your <strong>Google Analytics 4 (GA4)</strong> Measurement ID, e.g., <code>G-XXXXXXX</code>.</li>
+</ul>
+<h2 id="1-setup-django-cookie-groups-gtm-snippets">1. Setup Django Cookie Groups &amp; GTM Snippets</h2>
+<h3 id="prepare-the-django-settings">Prepare the Django Settings:</h3>
+<p>Add <code>gdpr_cookie_consent</code> to context processors in your Django settings:</p>
+<pre><code class="language-python">TEMPLATES = [
+    {
+        # …
+        &quot;OPTIONS&quot;: {
+            &quot;context_processors&quot;: [
+                # …
+                &quot;gdpr_cookie_consent.context_processors.gdpr_cookie_consent&quot;,
+            ],
+        },
+    },
+]
+</code></pre>
+<p>Also prepare <code>performance</code> and <code>marketing</code> sections in <code>COOKIE_CONSENT_SETTINGS</code>:</p>
 <pre><code class="language-python">from django.utils.translation import gettext_lazy as _
 
 COOKIE_CONSENT_SETTINGS = {
-    # Base template will be used for the cookie management view.
-    # It should contain {% block content %}{% endblock %}
     &quot;base_template_name&quot;: &quot;base.html&quot;,
-
-    # Description will be used in the modal dialog and cookie management view.
-    # Provide either a translatable string or a HTML template name.
-    &quot;description&quot;: &quot;&quot;,
     &quot;description_template_name&quot;: &quot;gdpr_cookie_consent/descriptions/what_are_cookies.html&quot;,
-
-    # Extra information will be used at the end of cookie management view.
-    # Provide either a translatable string or a HTML template name.
-    &quot;extra_information&quot;: &quot;&quot;,
-    &quot;extra_information_template_name&quot;: &quot;gdpr_cookie_consent/descriptions/extra.html&quot;,
-
-    # Button texts can be customized.
-    &quot;buttons&quot;: {
-        &quot;accept_all_dialog&quot;: _(&quot;Accept all recommended&quot;),
-        &quot;reject_all_dialog&quot;: _(&quot;Reject non-required&quot;),
-        &quot;manage_cookies&quot;: _(&quot;Manage cookies&quot;),
-        &quot;accept_all_config&quot;: _(&quot;Accept all&quot;),
-        &quot;reject_all_config&quot;: _(&quot;Reject all&quot;),
-        &quot;save_preferences&quot;: _(&quot;Save preferences&quot;),
-        &quot;save_and_close&quot;: _(&quot;Save and close&quot;),
-        &quot;close&quot;: _(&quot;Close&quot;),
-    },
-
-    # Should it be possible to close the dialog without choosing a consent?
-    &quot;show_dialog_close_button&quot;: True,
-
-    # Dialog position: center, top, left, right, bottom
     &quot;dialog_position&quot;: &quot;center&quot;,
-
-    # All important elements will have CSS classes with `cc-` prefix,
-    # by which you can target them and overwrite their styling.
-    # But you can attach some CSS classes to certain elements too.
-    &quot;styling&quot;: {
-        &quot;primary_button_css_classes&quot;: &quot;&quot;,
-        &quot;secondary_button_css_classes&quot;: &quot;&quot;,
-        &quot;close_button_css_classes&quot;: &quot;&quot;,
-        &quot;provider_list_css_classes&quot;: &quot;&quot;,
-        &quot;provider_item_css_classes&quot;: &quot;&quot;,
-        &quot;link_css_classes&quot;: &quot;&quot;,
-        &quot;section_anchor_css_classes&quot;: &quot;&quot;,
-    },
-
-    # Any variables that will be passed to conditional HTML snippets
-    &quot;extra_context&quot;: {
-        &quot;API_KEY_1&quot;: &quot;abcdefg12345&quot;,
-        &quot;API_KEY_2&quot;: &quot;12345abcdefg&quot;,
-    },
-
-    # Consent cookie max age say how many seconds to keep the cookie consent preferences.
-    # For example, it can be approximately six months
     &quot;consent_cookie_max_age&quot;: 60 * 60 * 24 * 30 * 6,
-
-    # Sections define the purposes of cookie groups.
-    # For example: Essential, Functionality, Performance, and Marketing
     &quot;sections&quot;: [
         {
-            # The slug will be used as a readable identifier of the section
             &quot;slug&quot;: &quot;essential&quot;,
-
-            # Translatable title of the section
             &quot;title&quot;: _(&quot;Essential Cookies&quot;),
-
-            # Required sections will be already selected and read-only
             &quot;required&quot;: True,
-
-            # Preselected sections will be selected in the configuration page before the consent is given.
-            # (all required sections will be preselected too and this setting is ignored for those)
-            # N.B. Laws of the United Kingdom, Germany, and France require that
-            # the opt-in consent for cookies must not be pre-enabled,
-            # so consult your lawyers before enabling this setting.
             &quot;preselected&quot;: True,
-
-            # Section summary will be shown in the modal dialog and preferences form.
-            # Provide either a translatable string or a HTML template name.
             &quot;summary&quot;: _(
                 &quot;These cookies are always on, as they’re essential for making this website work, and making it safe. Without these cookies, services you’ve asked for can’t be provided.&quot;),
-            &quot;summary_template_name&quot;: &quot;&quot;,
-
-            # Section description will be used at the extended cookie explanation in the cookie management view.
-            # Provide either a translatable string or a HTML template name.
             &quot;description&quot;: _(
                 &quot;These cookies are always on, as they’re essential for making this website work, and making it safe. Without these cookies, services you’ve asked for can’t be provided.&quot;),
-            &quot;description_template_name&quot;: &quot;&quot;,
-
-            # Cookie providers are websites that set the cookies on your website
             &quot;providers&quot;: [
                 {
-                    # Translatable title of the provider
                     &quot;title&quot;: _(&quot;This website&quot;),
-
-                    # Provider description will be used at the extended cookie explanation in the cookie management view.
-                    # Provide either a translatable string or a HTML template name.
-                    &quot;description&quot;: &quot;&quot;,
-                    &quot;description_template_name&quot;: &quot;&quot;,
-
-                    # A list of cookies set by the provider
                     &quot;cookies&quot;: [
                         {
-                            # Cookie name can include wildcard syntax like &quot;abc_*&quot;
                             &quot;cookie_name&quot;: &quot;sessionid&quot;,
-
-                            # Human-readable translated duration of the cookie
                             &quot;duration&quot;: _(&quot;2 Weeks&quot;),
-
-                            # Cookie description will be used at the extended cookie explanation in the cookie management view.
-                            # Provide either a translatable string or a HTML template name.
                             &quot;description&quot;: _(
                                 &quot;Session ID used to authenticate you and give permissions to use the site.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-
-                            # Cookie domain will be used to delete cookies if a section is unchecked
                             &quot;domain&quot;: &quot;.example.com&quot;,
                         },
                         {
@@ -254,73 +215,13 @@ COOKIE_CONSENT_SETTINGS = {
             ],
         },
         {
-            &quot;slug&quot;: &quot;functionality&quot;,
-            &quot;title&quot;: _(&quot;Functionality Cookies&quot;),
-
-            # Conditional HTML snippet will be loaded or rendered if this section is selected (optional)
-            &quot;conditional_html_template_name&quot;: &quot;conditional_html/functionality.html&quot;,
-            &quot;required&quot;: False,
-            &quot;summary&quot;: _(
-                &quot;These cookies help us provide enhanced functionality and personalisation, and remember your settings. They may be set by us or by third party providers.&quot;),
-            &quot;summary_template_name&quot;: &quot;&quot;,
-            &quot;description&quot;: _(
-                &quot;These cookies help us provide enhanced functionality and personalisation, and remember your settings. They may be set by us or by third party providers.&quot;),
-            &quot;description_template_name&quot;: &quot;&quot;,
-            &quot;providers&quot;: [
-                {
-                    &quot;title&quot;: _(&quot;Youtube&quot;),
-                    &quot;description&quot;: _(
-                        &quot;Youtube is a video platform from which we are embedding video tutorials and other informational videos.&quot;),
-                    &quot;description_template_name&quot;: &quot;&quot;,
-                    &quot;cookies&quot;: [
-                        {
-                            &quot;cookie_name&quot;: &quot;CONSENT&quot;,
-                            &quot;duration&quot;: _(&quot;2 Years&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.youtube.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;VISITOR_INFO1_LIVE&quot;,
-                            &quot;duration&quot;: _(&quot;6 Months&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;YSC&quot;,
-                            &quot;duration&quot;: _(&quot;Session&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;1P_JAR&quot;,
-                            &quot;duration&quot;: _(&quot;1 Month&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.google.com&quot;,
-                        },
-                        {
-                            &quot;cookie_name&quot;: &quot;NID&quot;,
-                            &quot;duration&quot;: _(&quot;6 Months&quot;),
-                            &quot;description&quot;: &quot;&quot;,
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.google.com&quot;,
-                        },
-                    ]
-                },
-            ],
-        },
-        {
             &quot;slug&quot;: &quot;performance&quot;,
             &quot;title&quot;: _(&quot;Performance Cookies&quot;),
-            &quot;conditional_html_template_name&quot;: &quot;conditional_html/performance.html&quot;,
             &quot;required&quot;: False,
             &quot;summary&quot;: _(
                 &quot;These cookies help us analyse how many people are using this website, where they come from and how they're using it. If you opt out of these cookies, we can’t get feedback to make this website better for you and all our users.&quot;),
-            &quot;summary_template_name&quot;: &quot;&quot;,
             &quot;description&quot;: _(
                 &quot;These cookies help us analyse how many people are using this website, where they come from and how they're using it. If you opt out of these cookies, we can’t get feedback to make this website better for you and all our users.&quot;),
-            &quot;description_template_name&quot;: &quot;&quot;,
             &quot;providers&quot;: [
                 {
                     &quot;title&quot;: _(&quot;Google Analytics&quot;),
@@ -349,14 +250,6 @@ COOKIE_CONSENT_SETTINGS = {
                             &quot;domain&quot;: &quot;.example.com&quot;,
                         },
                         {
-                            &quot;cookie_name&quot;: &quot;_gac_gb_*&quot;,
-                            &quot;duration&quot;: _(&quot;90 Days&quot;),
-                            &quot;description&quot;: _(
-                                &quot;Contains campaign related information. If you have linked your Google Analytics and Google Ads accounts, Google Ads website conversion tags will read this cookie unless you opt-out.&quot;),
-                            &quot;description_template_name&quot;: &quot;&quot;,
-                            &quot;domain&quot;: &quot;.example.com&quot;,
-                        },
-                        {
                             &quot;cookie_name&quot;: &quot;_gat_gtag_UA_*&quot;,
                             &quot;duration&quot;: _(&quot;1 Minute&quot;),
                             &quot;description&quot;: _(&quot;Stores unique user ID.&quot;),
@@ -370,15 +263,27 @@ COOKIE_CONSENT_SETTINGS = {
         {
             &quot;slug&quot;: &quot;marketing&quot;,
             &quot;title&quot;: _(&quot;Marketing Cookies&quot;),
-            &quot;conditional_html_template_name&quot;: &quot;conditional_html/marketing.html&quot;,
             &quot;required&quot;: False,
             &quot;summary&quot;: _(
                 &quot;These cookies are set by our advertising partners to track your activity and show you relevant ads on other sites as you browse the internet.&quot;),
-            &quot;summary_template_name&quot;: &quot;&quot;,
             &quot;description&quot;: _(
                 &quot;These cookies are set by our advertising partners to track your activity and show you relevant ads on other sites as you browse the internet.&quot;),
-            &quot;description_template_name&quot;: &quot;&quot;,
             &quot;providers&quot;: [
+                {
+                    &quot;title&quot;: _(&quot;Google Ads&quot;),
+                    &quot;description&quot;: _(&quot;These cookies are related to Google Ads conversion tracking.&quot;),
+                    &quot;description_template_name&quot;: &quot;&quot;,
+                    &quot;cookies&quot;: [
+                        {
+                            &quot;cookie_name&quot;: &quot;_gac_gb_*&quot;,
+                            &quot;duration&quot;: _(&quot;90 Days&quot;),
+                            &quot;description&quot;: _(
+                                &quot;Contains campaign related information. If you have linked your Google Analytics and Google Ads accounts, Google Ads website conversion tags will read this cookie unless you opt-out.&quot;),
+                            &quot;description_template_name&quot;: &quot;&quot;,
+                            &quot;domain&quot;: &quot;.example.com&quot;,
+                        },
+                    ]
+                },
                 {
                     &quot;title&quot;: _(&quot;Facebook Pixel&quot;),
                     &quot;description&quot;: _(
@@ -477,7 +382,162 @@ COOKIE_CONSENT_SETTINGS = {
         },
     ]
 }
-</code></pre></div>
+</code></pre>
+<h3 id="update-your-basehtml-template">Update your <code>base.html</code> template:</h3>
+<p>Add these two scripts in the <code>&lt;head&gt;</code> section:</p>
+<pre><code class="language-html">&lt;script nonce=&quot;{{ request.csp_nonce }}&quot;&gt;
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+
+   gtag('consent', 'default', {
+      'analytics_storage': '{% if &quot;performance&quot; in cookie_consent_controller.checked_sections %}granted{% else %}denied{% endif %}',
+      'ad_storage': '{% if &quot;marketing&quot; in cookie_consent_controller.checked_sections %}granted{% else %}denied{% endif %}',
+      'ad_user_data': '{% if &quot;marketing&quot; in cookie_consent_controller.checked_sections %}granted{% else %}denied{% endif %}',
+      'ad_personalization': '{% if &quot;marketing&quot; in cookie_consent_controller.checked_sections %}granted{% else %}denied{% endif %}',
+      'functionality_storage': 'denied',
+      'personalization_storage': 'denied',
+      'security_storage': 'granted'  // usually okay to grant by default
+   });
+&lt;/script&gt;
+
+&lt;!-- Google Tag Manager (head) --&gt;
+&lt;script nonce=&quot;{{ request.csp_nonce }}&quot;&gt;(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&amp;l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');&lt;/script&gt;
+</code></pre>
+<p>Add this iframe in the beginning of the <code>&lt;body&gt;</code> tag:</p>
+<pre><code class="language-html">&lt;!-- Google Tag Manager (body) --&gt;
+&lt;noscript&gt;&lt;iframe src=&quot;https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX&quot;
+height=&quot;0&quot; width=&quot;0&quot; style=&quot;display:none;visibility:hidden&quot;&gt;&lt;/iframe&gt;&lt;/noscript&gt;
+</code></pre>
+<p>Add the modal dialog of <strong>Django GDPR Cookie Consent</strong> at the end of the <code>&lt;body&gt;</code> tag:</p>
+<pre><code class="language-django">&lt;!-- Show cookie banner --&gt;
+{% include &quot;gdpr_cookie_consent/includes/cookie_consent.html&quot; %}
+</code></pre>
+<p>Replace <code>GTM-XXXXXXX</code> with your real GTM container ID.</p>
+<h2 id="2-create-javascript-custom-event-handlers-for-granding-and-denying-consent">2. Create JavaScript custom event handlers for granding and denying consent</h2>
+<p>In a JavaScript file that is included in your base template, add these custom event handlers:</p>
+<pre><code class="language-javascript">document.addEventListener('grantGDPRCookieConsent', (e) =&gt; {
+    console.log(`${e.detail.section} cookies granted`);
+    if (e.detail.section === 'performance') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+        });
+        dataLayer.push({'event': 'analytics_consent_granted'});
+    } else if (e.detail.section === 'marketing') {
+        gtag('consent', 'update', {
+            'ad_storage': 'granted',
+            'ad_user_data': 'granted',
+            'ad_personalization': 'granted'
+        });
+        dataLayer.push({'event': 'marketing_consent_granted'});
+    }
+});
+
+document.addEventListener('denyGDPRCookieConsent', (e) =&gt; {
+    console.log(`${e.detail.section} cookies denied`);
+    if (e.detail.section === 'performance') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'denied'
+        });
+        dataLayer.push({'event': 'analytics_consent_denied'});
+    } else if (e.detail.section === 'marketing') {
+        gtag('consent', 'update', {
+            'ad_storage': 'denied',
+            'ad_user_data': 'denied',
+            'ad_personalization': 'denied'
+        });
+        dataLayer.push({'event': 'marketing_consent_denied'});
+    }
+});
+</code></pre>
+<h2 id="3-set-up-gtm-to-react-to-consent">3. Set Up GTM to React to Consent</h2>
+<p>You’ll use the <strong>Google Tag Manager (GTM) web interface</strong> — a dashboard at <a href="https://tagmanager.google.com">tagmanager.google.com</a> — to add and manage all your tracking scripts (called <em>tags</em>). You won’t have to edit your website code every time you want to change something — GTM handles it all from one place.</p>
+<p>Here’s how to configure GTM to load scripts <strong>only after the user gives consent</strong>, using the signals from <strong>Google Consent Mode</strong>.</p>
+<h3 id="ga4-configuration-tag">GA4 Configuration Tag</h3>
+<p>This tag initializes Google Analytics 4 (GA4) tracking.</p>
+<ul>
+<li><strong>Tag Type</strong>: GA4 Configuration</li>
+<li><strong>Measurement ID</strong>: Your GA4 ID (<code>G-XXXXXXX</code>)</li>
+<li><strong>Trigger</strong>: <code>Consent Initialization – All Pages</code> (this runs very early, before other tags)</li>
+</ul>
+<p>This setup allows GA4 to start in a consent-aware way. It reads the <strong>default denied</strong> state at page load and will automatically adjust when the user accepts cookies later.</p>
+<h3 id="ga4-event-tags">GA4 Event Tags</h3>
+<p>These are additional GA4 tags to track specific actions (like form submissions or button clicks).</p>
+<ul>
+<li><strong>Tag Type</strong>: GA4 Event</li>
+<li><strong>Trigger</strong>: Choose based on the action (e.g., form submit, button click)</li>
+</ul>
+<p>You don’t need to check for consent manually here — <strong>GA4 automatically tracks or holds data based on the user's consent</strong> provided through Google Consent Mode.</p>
+<h3 id="google-ads-tags">Google Ads Tags</h3>
+<p>For conversion tracking and remarketing (showing ads to users who visited your site):</p>
+<ul>
+<li><strong>Tag Type</strong>: Google Ads Conversion Tracking or Remarketing</li>
+<li><strong>Trigger</strong>: Set this to fire after a successful action (like a purchase or sign-up)</li>
+</ul>
+<p>These tags <strong>respect consent choices</strong>, like whether the user allowed <code>ad_storage</code>.</p>
+<h3 id="facebook-pixel-or-other-custom-tools">Facebook Pixel or Other Custom Tools</h3>
+<p>If you’re using tools that don’t automatically understand Google Consent Mode (like Facebook Pixel), you’ll need to set them up to run <strong>only when the user gives marketing consent</strong>.</p>
+<ol>
+<li>
+<p><strong>Create a Variable</strong>:</p>
+</li>
+<li>
+<p><strong>Type</strong>: Data Layer Variable</p>
+</li>
+<li>
+<p><strong>Name</strong>: <code>event</code></p>
+</li>
+<li>
+<p><strong>Create a Trigger</strong>:</p>
+</li>
+<li>
+<p><strong>Type</strong>: Custom Event</p>
+</li>
+<li>
+<p><strong>Event Name</strong>: <code>marketing_consent_granted</code></p>
+</li>
+<li>
+<p><strong>Create a Tag</strong>:</p>
+</li>
+<li>
+<p><strong>Type</strong>: Custom HTML</p>
+</li>
+<li><strong>Code</strong>: Paste in your Facebook Pixel code</li>
+<li><strong>Trigger</strong>: Use the <code>marketing_consent_granted</code> trigger</li>
+</ol>
+<p>This setup ensures your custom script only runs if the user actively agrees to marketing cookies.</p>
+<h2 id="4-test-and-debug">4. Test and Debug</h2>
+<h3 id="use-gtms-preview-mode">Use GTM’s Preview Mode:</h3>
+<ol>
+<li><a href="https://tagassistant.google.com/">Enable Preview in GTM</a>.</li>
+<li>Visit your site.</li>
+<li>Accept cookies.</li>
+<li>You should see these events:</li>
+<li><code>analytics_consent_granted</code> → GA4 tag should fire.</li>
+<li><code>marketing_consent_granted</code> → Facebook tag should fire.</li>
+<li>Check which tags fired — they should match the user’s choices.</li>
+<li>The Consent tab of each event should show the correct preferred consent choices.</li>
+</ol>
+<h3 id="use-browsers-developer-tools">Use Browser's Developer Tools:</h3>
+<ul>
+<li>Open <strong>Network tab</strong></li>
+<li>GA4: Look for requests to <code>/g/collect</code> or <code>analytics.google.com</code></li>
+<li>Facebook: Look for requests to <code>fbevents.js</code> or <code>facebook.com/tr/</code></li>
+<li>Confirm they include <code>gcs</code> or <code>gcd</code> parameters in GA4 Consent Mode (that means consent data was sent)</li>
+</ul>
+<h2 id="youre-done">You’re Done!</h2>
+<p>Now your Django site is:</p>
+<ul>
+<li>Respecting user privacy.</li>
+<li>Compliant with <strong>Google Consent Mode</strong>.</li>
+<li>Only firing analytics and marketing tags after consent.</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>If you add more scripts via <strong>Google Tag Manager</strong> in the future, make sure that you list all the cookies that these scripts create, in the <code>COOKIE_CONSENT_SETTINGS</code>.</p>
+<p>For more information, check this article about <a href="https://support.google.com/analytics/answer/12017362?hl=en">EU-focused data and privacy using Google Analytics</a>.</p></div>
             </div>
         </div>
 

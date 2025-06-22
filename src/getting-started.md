@@ -12,7 +12,7 @@ Link to this file in your `requirements.txt`:
 
 ```
 Django==5.2
-file:./private_wheels/django_gdpr_cookie_consent-3.2.1-py2.py3-none-any.whl
+file:./private_wheels/django_gdpr_cookie_consent-4.0.0-py2.py3-none-any.whl
 ```
 
 Install the pip requirements from the `requirements.txt` file into your project's virtual environment:
@@ -24,7 +24,7 @@ Install the pip requirements from the `requirements.txt` file into your project'
 Alternatively to start quickly, install the wheel file into your Django project's virtual environment right from the shell:
 
 ```shell
-(venv)$ pip install /path/to/django_gdpr_cookie_consent-3.2.1-py2.py3-none-any.whl
+(venv)$ pip install /path/to/django_gdpr_cookie_consent-4.0.0-py2.py3-none-any.whl
 ```
 
 
@@ -82,21 +82,19 @@ Copy the example of [`COOKIE_CONSENT_SETTINGS`](cookie-consent-settings.md) to t
 
 In the example above, there are four cookie sections: __Essential__ (strictly necessary), __Functionality__ (optional), __Performance__ (optional), and __Marketing__ (optional).
 
-### 6. Create templates to render HTML for non-required cookies
+### 6. Create templates for your conditional HTML snippets
 
-Cookies that are set conditionally based upon a visitor’s choices must be rendered from conditional templates. 
+Cookies that depend on a visitor’s choices must be rendered using conditional templates.
 
-For example, analytics providers typically instruct to place the analytics tag within the page’s `<head>` section. However, suppose visitors are being given a choice of whether to accept analytics cookies using Django GDPR Cookie Consent. In that case, the analytics tag that sets the analytics cookies must be rendered from conditional templates. 
+For example, analytics providers often recommend placing their tag in the <head> section of the page. However, if you're using Django GDPR Cookie Consent to let visitors choose whether to accept analytics cookies, then the analytics tag (which sets those cookies) must be included conditionally—only if the visitor has given consent.
 
-The conditional HTML might include external or inline styles, external or inline JavaScripts, and other HTML snippets. 
+The conditional HTML can include external or inline styles, JavaScript files or blocks, and other HTML snippets.
 
 Create templates for the snippets that will be loaded or rendered when a particular section is chosen, for example:
 
 - conditional_html/functionality.html
 - conditional_html/performance.html
 - conditional_html/marketing.html
-
-Strictly necessary sections must not have conditional templates.
 
 For testing, you can add the markup like:
 
@@ -118,9 +116,48 @@ For testing, you can add the markup like:
 </script>
 ```
 
-Manage the scripts that create your __Essential (strictly necessary)__ cookies separately, unrelated to conditional html snippets.
+__Manage the scripts that create your strictly necessary cookies separately, unrelated to the Django GDPR Cookie Consent app.__
 
-### 7. Check if your setup is correct
+Conditional templates are not required since version 4.0.0, if you use the context processor or special JavaScript to determine which sections are active.
+
+### 7. Add event handlers if you need to track cookie consent changes
+
+In your base template, include a JavaScript code that handles tracking of cookie consent preference changes:
+
+```javascript
+document.addEventListener('grantGDPRCookieConsent', (e) => {
+    console.log(`${e.detail.section} cookies granted`);
+});
+
+document.addEventListener('denyGDPRCookieConsent', (e) => {
+    console.log(`${e.detail.section} cookies denied`);
+});
+
+document.addEventListener('changeGDPRCookieConsent', (e) => {
+    const comparison = {};
+    Object.keys(e.detail.consentPreferences).forEach(key => {
+        comparison[key] = {
+            before: e.detail.previousConsentPreferences[key],
+            after: e.detail.consentPreferences[key],
+            changed: e.detail.previousConsentPreferences[key] !== e.detail.consentPreferences[key]
+        };
+    });
+    console.table(comparison);
+});
+```
+
+Custom JavaScript events:
+
+`grantGDPRCookieConsent` and `denyGDPRCookieConsent` - triggered for each section individually when a user makes a choice.
+  - `e.detail.section`: slug of the section.
+
+`changeGDPRCookieConsent` - triggered after all changes are saved.
+  - `e.detail.consentPreferences`: an object mapping section slugs to `true` or `false`.
+  - `e.detail.previousConsentPreferences`: preferences before the change - an object mapping section slugs to `true`, `false`, or `null`.
+
+For example, these events can be used with [Google Consent Mode](use-case-google-consent-mode.md).
+
+### 8. Check if your setup is correct
 
 Check the correctness of your configuration with the following:
 
@@ -153,7 +190,7 @@ Here is an overview of all errors with generalized descriptions:
 - **gdpr\_cookie\_consent.E009**: `["providers"]` for each section must contain at least one provider.
 - **gdpr\_cookie\_consent.E010**: `["cookies"]` for each provider must contain at least one cookie.
 
-### 8. Translate your titles and descriptions
+### 9. Translate your titles and descriptions
 
 If your website has more than one language, prepare the translations:
 

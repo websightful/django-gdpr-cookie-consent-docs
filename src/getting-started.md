@@ -84,19 +84,19 @@ In the example above, there are four cookie sections: __Essential__ (strictly ne
 
 ### 6. Create templates for your conditional HTML snippets
 
-Cookies that depend on a visitor’s choices must be rendered using conditional templates.
+To respect visitor choices, certain cookies—such as those for analytics or marketing—should only be set after obtaining proper consent. One way to manage this is by using conditional templates that render cookie-related code only when a user has opted in.
 
-For example, analytics providers often recommend placing their tag in the <head> section of the page. However, if you're using Django GDPR Cookie Consent to let visitors choose whether to accept analytics cookies, then the analytics tag (which sets those cookies) must be included conditionally—only if the visitor has given consent.
+For example, analytics providers often recommend placing their tag in the `<head>` section. However, if you're using Django GDPR Cookie Consent to let visitors choose whether to accept analytics cookies, then the analytics tag (which sets those cookies) must be included conditionally—only if the visitor has given consent.
 
 The conditional HTML can include external or inline styles, JavaScript files or blocks, and other HTML snippets.
 
 Create templates for the snippets that will be loaded or rendered when a particular section is chosen, for example:
 
-- conditional_html/functionality.html
-- conditional_html/performance.html
-- conditional_html/marketing.html
+* `conditional_html/functionality.html`
+* `conditional_html/performance.html`
+* `conditional_html/marketing.html`
 
-For testing, you can add the markup like:
+For testing, you can add markup like:
 
 ```html
 <script>
@@ -116,9 +116,9 @@ For testing, you can add the markup like:
 </script>
 ```
 
-__Manage the scripts that create your strictly necessary cookies separately, unrelated to the Django GDPR Cookie Consent app.__
+**Manage the scripts that create your strictly necessary cookies separately, unrelated to the Django GDPR Cookie Consent app.**
 
-Conditional templates are not required since version 4.0.0, if you use the context processor or special JavaScript to determine which sections are active.
+Note: Since version 4.0.0, using conditional templates is optional. You can instead rely on the provided context processor or special JavaScript to check which cookie categories are active and control rendering accordingly.
 
 ### 7. Add event handlers if you need to track cookie consent changes
 

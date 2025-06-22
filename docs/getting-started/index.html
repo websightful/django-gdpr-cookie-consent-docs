@@ -168,16 +168,16 @@ urlpatterns = [
 <p>Copy the example of <a href="../cookie-consent-settings/"><code>COOKIE_CONSENT_SETTINGS</code></a> to the end of your project settings, then modify it to match the cookie usage of your website.</p>
 <p>In the example above, there are four cookie sections: <strong>Essential</strong> (strictly necessary), <strong>Functionality</strong> (optional), <strong>Performance</strong> (optional), and <strong>Marketing</strong> (optional).</p>
 <h3 id="6-create-templates-for-your-conditional-html-snippets">6. Create templates for your conditional HTML snippets</h3>
-<p>Cookies that depend on a visitor’s choices must be rendered using conditional templates.</p>
-<p>For example, analytics providers often recommend placing their tag in the <head> section of the page. However, if you're using Django GDPR Cookie Consent to let visitors choose whether to accept analytics cookies, then the analytics tag (which sets those cookies) must be included conditionally—only if the visitor has given consent.</p>
+<p>To respect visitor choices, certain cookies—such as those for analytics or marketing—should only be set after obtaining proper consent. One way to manage this is by using conditional templates that render cookie-related code only when a user has opted in.</p>
+<p>For example, analytics providers often recommend placing their tag in the <code>&lt;head&gt;</code> section. However, if you're using Django GDPR Cookie Consent to let visitors choose whether to accept analytics cookies, then the analytics tag (which sets those cookies) must be included conditionally—only if the visitor has given consent.</p>
 <p>The conditional HTML can include external or inline styles, JavaScript files or blocks, and other HTML snippets.</p>
 <p>Create templates for the snippets that will be loaded or rendered when a particular section is chosen, for example:</p>
 <ul>
-<li>conditional_html/functionality.html</li>
-<li>conditional_html/performance.html</li>
-<li>conditional_html/marketing.html</li>
+<li><code>conditional_html/functionality.html</code></li>
+<li><code>conditional_html/performance.html</code></li>
+<li><code>conditional_html/marketing.html</code></li>
 </ul>
-<p>For testing, you can add the markup like:</p>
+<p>For testing, you can add markup like:</p>
 <pre><code class="language-html">&lt;script&gt;
     console.log('Conditional functionality code loaded.');
 &lt;/script&gt;
@@ -191,7 +191,7 @@ urlpatterns = [
 &lt;/script&gt;
 </code></pre>
 <p><strong>Manage the scripts that create your strictly necessary cookies separately, unrelated to the Django GDPR Cookie Consent app.</strong></p>
-<p>Conditional templates are not required since version 4.0.0, if you use the context processor or special JavaScript to determine which sections are active.</p>
+<p>Note: Since version 4.0.0, using conditional templates is optional. You can instead rely on the provided context processor or special JavaScript to check which cookie categories are active and control rendering accordingly.</p>
 <h3 id="7-add-event-handlers-if-you-need-to-track-cookie-consent-changes">7. Add event handlers if you need to track cookie consent changes</h3>
 <p>In your base template, include a JavaScript code that handles tracking of cookie consent preference changes:</p>
 <pre><code class="language-javascript">document.addEventListener('grantGDPRCookieConsent', (e) =&gt; {

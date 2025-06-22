@@ -481,32 +481,22 @@ document.addEventListener('denyGDPRCookieConsent', (e) =&gt; {
 <h3 id="facebook-pixel-or-other-custom-tools">Facebook Pixel or Other Custom Tools</h3>
 <p>If you’re using tools that don’t automatically understand Google Consent Mode (like Facebook Pixel), you’ll need to set them up to run <strong>only when the user gives marketing consent</strong>.</p>
 <ol>
-<li>
-<p><strong>Create a Variable</strong>:</p>
+<li><strong>Create a Variable</strong>:<ul>
+<li><strong>Type</strong>: Data Layer Variable</li>
+<li><strong>Name</strong>: <code>event</code></li>
+</ul>
 </li>
-<li>
-<p><strong>Type</strong>: Data Layer Variable</p>
+<li><strong>Create a Trigger</strong>:<ul>
+<li><strong>Type</strong>: Custom Event</li>
+<li><strong>Event Name</strong>: <code>marketing_consent_granted</code></li>
+</ul>
 </li>
-<li>
-<p><strong>Name</strong>: <code>event</code></p>
-</li>
-<li>
-<p><strong>Create a Trigger</strong>:</p>
-</li>
-<li>
-<p><strong>Type</strong>: Custom Event</p>
-</li>
-<li>
-<p><strong>Event Name</strong>: <code>marketing_consent_granted</code></p>
-</li>
-<li>
-<p><strong>Create a Tag</strong>:</p>
-</li>
-<li>
-<p><strong>Type</strong>: Custom HTML</p>
-</li>
+<li><strong>Create a Tag</strong>:<ul>
+<li><strong>Type</strong>: Custom HTML</li>
 <li><strong>Code</strong>: Paste in your Facebook Pixel code</li>
 <li><strong>Trigger</strong>: Use the <code>marketing_consent_granted</code> trigger</li>
+</ul>
+</li>
 </ol>
 <p>This setup ensures your custom script only runs if the user actively agrees to marketing cookies.</p>
 <h2 id="4-test-and-debug">4. Test and Debug</h2>

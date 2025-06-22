@@ -377,20 +377,15 @@ These tags **respect consent choices**, like whether the user allowed `ad_storag
 If you’re using tools that don’t automatically understand Google Consent Mode (like Facebook Pixel), you’ll need to set them up to run **only when the user gives marketing consent**.
 
 1. **Create a Variable**:
-
-   * **Type**: Data Layer Variable
-   * **Name**: `event`
-
+    * **Type**: Data Layer Variable
+    * **Name**: `event`
 2. **Create a Trigger**:
-
-   * **Type**: Custom Event
-   * **Event Name**: `marketing_consent_granted`
-
+    * **Type**: Custom Event
+    * **Event Name**: `marketing_consent_granted`
 3. **Create a Tag**:
-
-   * **Type**: Custom HTML
-   * **Code**: Paste in your Facebook Pixel code
-   * **Trigger**: Use the `marketing_consent_granted` trigger
+    * **Type**: Custom HTML
+    * **Code**: Paste in your Facebook Pixel code
+    * **Trigger**: Use the `marketing_consent_granted` trigger
 
 This setup ensures your custom script only runs if the user actively agrees to marketing cookies.
 

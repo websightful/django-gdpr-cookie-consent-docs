@@ -215,11 +215,15 @@ document.addEventListener('changeGDPRCookieConsent', (e) =&gt; {
 });
 </code></pre>
 <p>Custom JavaScript events:</p>
-<p><code>grantGDPRCookieConsent</code> and <code>denyGDPRCookieConsent</code> - triggered for each section individually when a user makes a choice.
-   - <code>e.detail.section</code>: slug of the section.</p>
-<p><code>changeGDPRCookieConsent</code> - triggered after all changes are saved.
-   - <code>e.detail.consentPreferences</code>: an object mapping section slugs to <code>true</code> or <code>false</code>.
-   - <code>e.detail.previousConsentPreferences</code>: preferences before the change - an object mapping section slugs to <code>true</code>, <code>false</code>, or <code>null</code>.</p>
+<p><code>grantGDPRCookieConsent</code> and <code>denyGDPRCookieConsent</code> - triggered for each section individually when a user makes a choice.</p>
+<ul>
+<li><code>e.detail.section</code>: slug of the section.</li>
+</ul>
+<p><code>changeGDPRCookieConsent</code> - triggered after all changes are saved.</p>
+<ul>
+<li><code>e.detail.consentPreferences</code>: an object mapping section slugs to <code>true</code> or <code>false</code>.</li>
+<li><code>e.detail.previousConsentPreferences</code>: preferences before the change - an object mapping section slugs to <code>true</code>, <code>false</code>, or <code>null</code>.</li>
+</ul>
 <p>For example, these events can be used with <a href="../use-case-google-consent-mode/">Google Consent Mode</a>.</p>
 <h3 id="8-check-if-your-setup-is-correct">8. Check if your setup is correct</h3>
 <p>Check the correctness of your configuration with the following:</p>

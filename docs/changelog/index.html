@@ -110,6 +110,10 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#v410-2025-06-24" class="nav-link">[v4.1.0] - 2025-06-24</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#v400-2025-06-22" class="nav-link">[v4.0.0] - 2025-06-22</a>
               <ul class="nav flex-column">
               </ul>
@@ -247,17 +251,26 @@
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="unreleased">[Unreleased]</h2>
 <p>...</p>
+<h2 id="v410-2025-06-24">[v4.1.0] - 2025-06-24</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Dialog close button is always inside the dialog when it is visible.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Scrolling within the dialog for small screens fixed.</li>
+</ul>
 <h2 id="v400-2025-06-22">[v4.0.0] - 2025-06-22</h2>
 <h3 id="added">Added</h3>
 <ul>
 <li>Custom JavaScript events <code>grantGDPRCookieConsent</code>, <code>denyGDPRCookieConsent</code>, and <code>changeGDPRCookieConsent</code>.</li>
 </ul>
-<h3 id="changed">Changed</h3>
+<h3 id="changed_1">Changed</h3>
 <ul>
 <li>Conditional templates are not required (and system checks can be silenced).</li>
 <li>Conditional templates are loaded even on cookie management page.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed_1">Fixed</h3>
 <ul>
 <li>Scrolling within the dialog for small screens fixed.</li>
 </ul>
@@ -266,7 +279,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>The <code>redirect_url</code> setting removed. After saving the cookie management form, the consent is activated for the same page.</li>
 </ul>
 <h2 id="v321-2025-04-06">[v3.2.1] - 2025-04-06</h2>
-<h3 id="changed_1">Changed</h3>
+<h3 id="changed_2">Changed</h3>
 <ul>
 <li>The error IDs for Django system checks revisited and generalized.</li>
 <li>Added tag "gdpr_cookie_consent" for Django system checks.</li>
@@ -283,11 +296,11 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Dropped support for Django 3.2, 4.0, and 4.1</li>
 </ul>
 <h2 id="v311-2024-12-30">[v3.1.1] - 2024-12-30</h2>
-<h3 id="fixed_1">Fixed</h3>
+<h3 id="fixed_2">Fixed</h3>
 <ul>
 <li>SCSS file updated.</li>
 </ul>
-<h3 id="changed_2">Changed</h3>
+<h3 id="changed_3">Changed</h3>
 <ul>
 <li>CSS file refactored and optimized.</li>
 </ul>
@@ -303,7 +316,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Accessibility attributes added to all widgets.</li>
 <li>Added settings <code>close_button_css_classes</code> and <code>redirect_url</code>.</li>
 </ul>
-<h3 id="changed_3">Changed</h3>
+<h3 id="changed_4">Changed</h3>
 <ul>
 <li>Improved keyboard accessibility.</li>
 <li>Improved styling.</li>
@@ -315,18 +328,18 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Dropped support for Django 2.2, 3.0, and 3.1</li>
 </ul>
 <h2 id="v231-2024-08-09">[v2.3.1] - 2024-08-09</h2>
-<h3 id="changed_4">Changed</h3>
+<h3 id="changed_5">Changed</h3>
 <ul>
 <li>Classifiers updated at setup.py.</li>
 <li>README updated.</li>
 </ul>
 <h2 id="v230-2024-08-09">[v2.3.0] - 2024-08-09</h2>
-<h3 id="changed_5">Changed</h3>
+<h3 id="changed_6">Changed</h3>
 <ul>
 <li>Django 5.1 support.</li>
 </ul>
 <h2 id="v221-2024-07-31">[v2.2.1] - 2024-07-31</h2>
-<h3 id="fixed_2">Fixed</h3>
+<h3 id="fixed_3">Fixed</h3>
 <ul>
 <li>Required sections don't attempt to include conditional templates.</li>
 </ul>
@@ -342,7 +355,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Django 4.2 support.</li>
 </ul>
 <h2 id="v201-2022-10-31">[v2.0.1] - 2022-10-31</h2>
-<h3 id="fixed_3">Fixed</h3>
+<h3 id="fixed_4">Fixed</h3>
 <ul>
 <li>Python 3.5, 3.6, 3.7, 3.8 support.</li>
 </ul>
@@ -355,7 +368,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Python 3.11 support.</li>
 <li>Dialog position configurations: center, top, left, right, bottom.</li>
 </ul>
-<h3 id="changed_6">Changed</h3>
+<h3 id="changed_7">Changed</h3>
 <ul>
 <li>Dialog close button made optional and not shown by default.</li>
 </ul>
@@ -364,7 +377,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Pointer cursor for "Show cookie providers".</li>
 </ul>
-<h3 id="fixed_4">Fixed</h3>
+<h3 id="fixed_5">Fixed</h3>
 <ul>
 <li>gettext_lazy usage in the settings.</li>
 </ul>
@@ -384,12 +397,12 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Python 3.9 and 3.10 support.</li>
 </ul>
 <h2 id="v032-2021-11-14">[v0.3.2] - 2021-11-14</h2>
-<h3 id="fixed_5">Fixed</h3>
+<h3 id="fixed_6">Fixed</h3>
 <ul>
 <li>More spacious layout for the modal dialog on mobile screens.</li>
 </ul>
 <h2 id="v031-2021-11-12">[v0.3.1] - 2021-11-12</h2>
-<h3 id="fixed_6">Fixed</h3>
+<h3 id="fixed_7">Fixed</h3>
 <ul>
 <li>The styling for the modal dialog close button fixed for mobile Chrome and Safari.</li>
 </ul>
@@ -404,17 +417,17 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>HTML ids added for switch widgets for easier testability.</li>
 </ul>
 <h2 id="v023-2021-11-01">[v0.2.3] - 2021-11-01</h2>
-<h3 id="fixed_7">Fixed</h3>
+<h3 id="fixed_8">Fixed</h3>
 <ul>
 <li>Modal dialog submission fix for Safari.</li>
 </ul>
 <h2 id="v022-2021-11-01">[v0.2.2] - 2021-11-01</h2>
-<h3 id="fixed_8">Fixed</h3>
+<h3 id="fixed_9">Fixed</h3>
 <ul>
 <li>Multiple <code>&lt;script&gt;</code> loading in the conditional snippets fixed.</li>
 </ul>
 <h2 id="v021-2021-10-27">[v0.2.1] - 2021-10-27</h2>
-<h3 id="changed_7">Changed</h3>
+<h3 id="changed_8">Changed</h3>
 <ul>
 <li>Modal dialog centered vertically and horizontally.</li>
 </ul>
@@ -423,17 +436,17 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <ul>
 <li>Logging the cookie consent choices in the database because of the legal requirements.</li>
 </ul>
-<h3 id="fixed_9">Fixed</h3>
+<h3 id="fixed_10">Fixed</h3>
 <ul>
 <li>Disabling the buttons while saving the Cookie Choices so that they are not triggered more than once with slow Internet connections.</li>
 </ul>
 <h2 id="v0111-2021-10-24">[v0.1.11] - 2021-10-24</h2>
-<h3 id="fixed_10">Fixed</h3>
+<h3 id="fixed_11">Fixed</h3>
 <ul>
 <li>Styling of the switches.</li>
 </ul>
 <h2 id="v018-2021-10-24">[v0.1.8] - 2021-10-24</h2>
-<h3 id="fixed_11">Fixed</h3>
+<h3 id="fixed_12">Fixed</h3>
 <ul>
 <li>Styling for the modal dialog close button.</li>
 </ul>
@@ -448,7 +461,7 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Default extra.html template.</li>
 </ul>
 <h2 id="v014-2021-10-23">[v0.1.4] - 2021-10-23</h2>
-<h3 id="fixed_12">Fixed</h3>
+<h3 id="fixed_13">Fixed</h3>
 <ul>
 <li>bump2version configuration.</li>
 </ul>

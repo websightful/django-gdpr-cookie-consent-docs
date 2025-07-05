@@ -10,6 +10,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ------------
 ...
 
+[v4.1.2] - 2025-06-29
+------------------
+
+### Fixed
+
+- Sections with `preselected` set to `False` won't be marked as denied by default. Their status (granted or denied) is revealed only after saving preferences. This mainly affects custom JavaScript events.
+
+[v4.1.1] - 2025-06-24
+------------------
+
+### Fixed
+
+- Dialog close button style consistency across configurations.
+
 [v4.1.0] - 2025-06-24
 ------------------
 
@@ -303,3 +317,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 -->
+
+

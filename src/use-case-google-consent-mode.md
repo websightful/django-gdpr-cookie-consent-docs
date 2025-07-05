@@ -398,7 +398,7 @@ This setup ensures your custom script only runs if the user actively agrees to m
 3. Accept cookies.
 4. You should see these events:
     * `analytics_consent_granted` → GA4 tag should fire.
-    * `marketing_consent_granted` → Facebook tag should fire.
+    * `marketing_consent_granted` → Google Ads and Facebook tag should fire.
 5. Check which tags fired — they should match the user’s choices.
 6. The Consent tab of each event should show the correct preferred consent choices.
 

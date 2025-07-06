@@ -459,7 +459,7 @@ document.addEventListener('denyGDPRCookieConsent', (e) =&gt; {
 <h3 id="ga4-configuration-tag">GA4 Configuration Tag</h3>
 <p>This tag initializes Google Analytics 4 (GA4) tracking.</p>
 <ul>
-<li><strong>Tag Type</strong>: GA4 Configuration</li>
+<li><strong>Tag Type</strong>: Google Tag</li>
 <li><strong>Measurement ID</strong>: Your GA4 ID (<code>G-XXXXXXX</code>)</li>
 <li><strong>Trigger</strong>: <code>Consent Initialization – All Pages</code> (this runs very early, before other tags)</li>
 </ul>
@@ -467,14 +467,14 @@ document.addEventListener('denyGDPRCookieConsent', (e) =&gt; {
 <h3 id="ga4-event-tags">GA4 Event Tags</h3>
 <p>These are additional GA4 tags to track specific actions (like form submissions or button clicks).</p>
 <ul>
-<li><strong>Tag Type</strong>: GA4 Event</li>
+<li><strong>Tag Type</strong>: Google Analytics: GA4 Event</li>
 <li><strong>Trigger</strong>: Choose based on the action (e.g., form submit, button click)</li>
 </ul>
 <p>You don’t need to check for consent manually here — <strong>GA4 automatically tracks or holds data based on the user's consent</strong> provided through Google Consent Mode.</p>
 <h3 id="google-ads-tags">Google Ads Tags</h3>
-<p>For conversion tracking and remarketing (showing ads to users who visited your site):</p>
+<p>If you are using Google Ads, set these for conversion tracking and remarketing (showing ads to users who visited your site):</p>
 <ul>
-<li><strong>Tag Type</strong>: Google Ads Conversion Tracking or Remarketing</li>
+<li><strong>Tag Type</strong>: Google Ads Conversion Tracking or Google Ads Remarketing</li>
 <li><strong>Trigger</strong>: Set this to fire after a successful action (like a purchase or sign-up)</li>
 </ul>
 <p>These tags <strong>respect consent choices</strong>, like whether the user allowed <code>ad_storage</code>.</p>

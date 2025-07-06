@@ -348,7 +348,7 @@ Here’s how to configure GTM to load scripts **only after the user gives consen
 
 This tag initializes Google Analytics 4 (GA4) tracking.
 
-* **Tag Type**: GA4 Configuration
+* **Tag Type**: Google Tag
 * **Measurement ID**: Your GA4 ID (`G-XXXXXXX`)
 * **Trigger**: `Consent Initialization – All Pages` (this runs very early, before other tags)
 
@@ -358,16 +358,16 @@ This setup allows GA4 to start in a consent-aware way. It reads the **default de
 
 These are additional GA4 tags to track specific actions (like form submissions or button clicks).
 
-* **Tag Type**: GA4 Event
+* **Tag Type**: Google Analytics: GA4 Event
 * **Trigger**: Choose based on the action (e.g., form submit, button click)
 
 You don’t need to check for consent manually here — **GA4 automatically tracks or holds data based on the user's consent** provided through Google Consent Mode.
 
 ### Google Ads Tags
 
-For conversion tracking and remarketing (showing ads to users who visited your site):
+If you are using Google Ads, set these for conversion tracking and remarketing (showing ads to users who visited your site):
 
-* **Tag Type**: Google Ads Conversion Tracking or Remarketing
+* **Tag Type**: Google Ads Conversion Tracking or Google Ads Remarketing
 * **Trigger**: Set this to fire after a successful action (like a purchase or sign-up)
 
 These tags **respect consent choices**, like whether the user allowed `ad_storage`.

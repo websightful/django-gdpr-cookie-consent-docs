@@ -342,6 +342,8 @@ document.addEventListener('denyGDPRCookieConsent', (e) => {
 
 You’ll use the **Google Tag Manager (GTM) web interface** — a dashboard at [tagmanager.google.com](https://tagmanager.google.com) — to add and manage all your tracking scripts (called *tags*). You won’t have to edit your website code every time you want to change something — GTM handles it all from one place.
 
+In your container settings, check **Enable consent overview** to make sure that all your tags have cookie consent setting configured. 
+
 Here’s how to configure GTM to load scripts **only after the user gives consent**, using the signals from **Google Consent Mode**.
 
 ### GA4 Configuration Tag
@@ -350,6 +352,7 @@ This tag initializes Google Analytics 4 (GA4) tracking.
 
 * **Tag Type**: Google Tag
 * **Measurement ID**: Your GA4 ID (`G-XXXXXXX`)
+* **Consent Settings**: Require additional consent for tag to fire: analytics_storage
 * **Trigger**: `Consent Initialization – All Pages` (this runs very early, before other tags)
 
 This setup allows GA4 to start in a consent-aware way. It reads the **default denied** state at page load and will automatically adjust when the user accepts cookies later.
@@ -359,6 +362,7 @@ This setup allows GA4 to start in a consent-aware way. It reads the **default de
 These are additional GA4 tags to track specific actions (like form submissions or button clicks).
 
 * **Tag Type**: Google Analytics: GA4 Event
+* **Consent Settings**: Require additional consent for tag to fire: analytics_storage
 * **Trigger**: Choose based on the action (e.g., form submit, button click)
 
 You don’t need to check for consent manually here — **GA4 automatically tracks or holds data based on the user's consent** provided through Google Consent Mode.
@@ -368,6 +372,7 @@ You don’t need to check for consent manually here — **GA4 automatically trac
 If you are using Google Ads, set these for conversion tracking and remarketing (showing ads to users who visited your site):
 
 * **Tag Type**: Google Ads Conversion Tracking or Google Ads Remarketing
+* **Consent Settings**: Require additional consent for tag to fire: ad_storage, ad_personalization, ad_user_data
 * **Trigger**: Set this to fire after a successful action (like a purchase or sign-up)
 
 These tags **respect consent choices**, like whether the user allowed `ad_storage`.

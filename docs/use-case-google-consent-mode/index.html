@@ -455,12 +455,14 @@ document.addEventListener('denyGDPRCookieConsent', (e) =&gt; {
 </code></pre>
 <h2 id="3-set-up-gtm-to-react-to-consent">3. Set Up GTM to React to Consent</h2>
 <p>You’ll use the <strong>Google Tag Manager (GTM) web interface</strong> — a dashboard at <a href="https://tagmanager.google.com">tagmanager.google.com</a> — to add and manage all your tracking scripts (called <em>tags</em>). You won’t have to edit your website code every time you want to change something — GTM handles it all from one place.</p>
+<p>In your container settings, check <strong>Enable consent overview</strong> to make sure that all your tags have cookie consent setting configured. </p>
 <p>Here’s how to configure GTM to load scripts <strong>only after the user gives consent</strong>, using the signals from <strong>Google Consent Mode</strong>.</p>
 <h3 id="ga4-configuration-tag">GA4 Configuration Tag</h3>
 <p>This tag initializes Google Analytics 4 (GA4) tracking.</p>
 <ul>
 <li><strong>Tag Type</strong>: Google Tag</li>
 <li><strong>Measurement ID</strong>: Your GA4 ID (<code>G-XXXXXXX</code>)</li>
+<li><strong>Consent Settings</strong>: Require additional consent for tag to fire: analytics_storage</li>
 <li><strong>Trigger</strong>: <code>Consent Initialization – All Pages</code> (this runs very early, before other tags)</li>
 </ul>
 <p>This setup allows GA4 to start in a consent-aware way. It reads the <strong>default denied</strong> state at page load and will automatically adjust when the user accepts cookies later.</p>
@@ -468,6 +470,7 @@ document.addEventListener('denyGDPRCookieConsent', (e) =&gt; {
 <p>These are additional GA4 tags to track specific actions (like form submissions or button clicks).</p>
 <ul>
 <li><strong>Tag Type</strong>: Google Analytics: GA4 Event</li>
+<li><strong>Consent Settings</strong>: Require additional consent for tag to fire: analytics_storage</li>
 <li><strong>Trigger</strong>: Choose based on the action (e.g., form submit, button click)</li>
 </ul>
 <p>You don’t need to check for consent manually here — <strong>GA4 automatically tracks or holds data based on the user's consent</strong> provided through Google Consent Mode.</p>
@@ -475,6 +478,7 @@ document.addEventListener('denyGDPRCookieConsent', (e) =&gt; {
 <p>If you are using Google Ads, set these for conversion tracking and remarketing (showing ads to users who visited your site):</p>
 <ul>
 <li><strong>Tag Type</strong>: Google Ads Conversion Tracking or Google Ads Remarketing</li>
+<li><strong>Consent Settings</strong>: Require additional consent for tag to fire: ad_storage, ad_personalization, ad_user_data</li>
 <li><strong>Trigger</strong>: Set this to fire after a successful action (like a purchase or sign-up)</li>
 </ul>
 <p>These tags <strong>respect consent choices</strong>, like whether the user allowed <code>ad_storage</code>.</p>

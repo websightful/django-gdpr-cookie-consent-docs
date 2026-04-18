@@ -110,6 +110,14 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#v501-2026-04-18" class="nav-link">[v5.0.1] - 2026-04-18</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#v500-2026-04-14" class="nav-link">[v5.0.0] - 2026-04-14</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#v412-2025-06-29" class="nav-link">[v4.1.2] - 2025-06-29</a>
               <ul class="nav flex-column">
               </ul>
@@ -259,126 +267,161 @@
 and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semantic Versioning</a>.</p>
 <h2 id="unreleased">[Unreleased]</h2>
 <p>...</p>
-<h2 id="v412-2025-06-29">[v4.1.2] - 2025-06-29</h2>
+<h2 id="v501-2026-04-18">[v5.0.1] - 2026-04-18</h2>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>README updated with more generic setup instructions.</li>
+</ul>
+<h2 id="v500-2026-04-14">[v5.0.0] - 2026-04-14</h2>
+<h3 id="added">Added</h3>
+<ul>
+<li>If an anonymous user who made a cookie consent preference logs in, their user account gets linked to the record.</li>
+<li>Django 6.0 and Python 3.14 support.</li>
+</ul>
+<h3 id="changed_1">Changed</h3>
+<ul>
+<li>Showing the user's name in the records instead of "Anonymous" if the user logged in later.</li>
+<li>No atomic transaction for records.</li>
+<li>App packaging updated to the newer standard.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>No more support for Python 3.8 and 3.9.</li>
+</ul>
 <h3 id="fixed">Fixed</h3>
+<ul>
+<li>Consent choices are now stored as JSON instead of plain text, enabling reliable database queries and removing a source of double-serialization bugs.</li>
+<li>Very long <code>User-Agent</code> strings are now capped at 512 characters before being saved, preventing storage abuse from malicious bots.</li>
+<li>Cookie choices HTML now renders correctly in the Django admin on Django 4+.</li>
+<li>Duplicate hashing logic in the model has been consolidated into a single place, so future algorithm changes only need to be made once.</li>
+<li>Being explicit about sending sessionid to the cookie management form.</li>
+</ul>
+<h3 id="security">Security</h3>
+<ul>
+<li>Verification security was upgraded to use a stronger, more cryptographically sound hashing algorithm HMAC-SHA256 instead of MD5, with all existing records migrated to the new standard.</li>
+<li><code>anonymize_ip</code> now safely returns <code>None</code> instead of raising a <code>TypeError</code> when no IP address is present in the request — preventing an unhandled 500 error that would break consent recording in proxy or test environments.</li>
+<li>The <code>cookie_consent</code> cookie is now set with <code>secure</code> and <code>samesite</code> attributes, inheriting their values from <code>SESSION_COOKIE_SECURE</code> and <code>SESSION_COOKIE_SAMESITE</code> — preventing the consent cookie from being transmitted over plain HTTP or sent in cross-site requests.</li>
+</ul>
+<h2 id="v412-2025-06-29">[v4.1.2] - 2025-06-29</h2>
+<h3 id="fixed_1">Fixed</h3>
 <ul>
 <li>Sections with <code>preselected</code> set to <code>False</code> won't be marked as denied by default. Their status (granted or denied) is revealed only after saving preferences. This mainly affects custom JavaScript events.</li>
 </ul>
 <h2 id="v411-2025-06-24">[v4.1.1] - 2025-06-24</h2>
-<h3 id="fixed_1">Fixed</h3>
+<h3 id="fixed_2">Fixed</h3>
 <ul>
 <li>Dialog close button style consistency across configurations.</li>
 </ul>
 <h2 id="v410-2025-06-24">[v4.1.0] - 2025-06-24</h2>
-<h3 id="changed">Changed</h3>
+<h3 id="changed_2">Changed</h3>
 <ul>
 <li>Dialog close button is always inside the dialog when it is visible.</li>
-</ul>
-<h3 id="fixed_2">Fixed</h3>
-<ul>
-<li>Scrolling within the dialog for small screens fixed.</li>
-</ul>
-<h2 id="v400-2025-06-22">[v4.0.0] - 2025-06-22</h2>
-<h3 id="added">Added</h3>
-<ul>
-<li>Custom JavaScript events <code>grantGDPRCookieConsent</code>, <code>denyGDPRCookieConsent</code>, and <code>changeGDPRCookieConsent</code>.</li>
-</ul>
-<h3 id="changed_1">Changed</h3>
-<ul>
-<li>Conditional templates are not required (and system checks can be silenced).</li>
-<li>Conditional templates are loaded even on cookie management page.</li>
 </ul>
 <h3 id="fixed_3">Fixed</h3>
 <ul>
 <li>Scrolling within the dialog for small screens fixed.</li>
 </ul>
-<h3 id="removed">Removed</h3>
+<h2 id="v400-2025-06-22">[v4.0.0] - 2025-06-22</h2>
+<h3 id="added_1">Added</h3>
+<ul>
+<li>Custom JavaScript events <code>grantGDPRCookieConsent</code>, <code>denyGDPRCookieConsent</code>, and <code>changeGDPRCookieConsent</code>.</li>
+</ul>
+<h3 id="changed_3">Changed</h3>
+<ul>
+<li>Conditional templates are not required (and system checks can be silenced).</li>
+<li>Conditional templates are loaded even on cookie management page.</li>
+</ul>
+<h3 id="fixed_4">Fixed</h3>
+<ul>
+<li>Scrolling within the dialog for small screens fixed.</li>
+</ul>
+<h3 id="removed_1">Removed</h3>
 <ul>
 <li>The <code>redirect_url</code> setting removed. After saving the cookie management form, the consent is activated for the same page.</li>
 </ul>
 <h2 id="v321-2025-04-06">[v3.2.1] - 2025-04-06</h2>
-<h3 id="changed_2">Changed</h3>
+<h3 id="changed_4">Changed</h3>
 <ul>
 <li>The error IDs for Django system checks revisited and generalized.</li>
 <li>Added tag "gdpr_cookie_consent" for Django system checks.</li>
 </ul>
 <h2 id="v320-2025-04-04">[v3.2.0] - 2025-04-04</h2>
-<h3 id="added_1">Added</h3>
+<h3 id="added_2">Added</h3>
 <ul>
 <li>Django system checks to check the validity of the <code>COOKIE_CONSENT_SETTINGS</code> configuration.</li>
 <li>Django 5.2 support.</li>
 </ul>
-<h3 id="removed_1">Removed</h3>
+<h3 id="removed_2">Removed</h3>
 <ul>
 <li>Dropped support for Python 3.6 and 3.7</li>
 <li>Dropped support for Django 3.2, 4.0, and 4.1</li>
 </ul>
 <h2 id="v311-2024-12-30">[v3.1.1] - 2024-12-30</h2>
-<h3 id="fixed_4">Fixed</h3>
+<h3 id="fixed_5">Fixed</h3>
 <ul>
 <li>SCSS file updated.</li>
 </ul>
-<h3 id="changed_3">Changed</h3>
+<h3 id="changed_5">Changed</h3>
 <ul>
 <li>CSS file refactored and optimized.</li>
 </ul>
 <h2 id="v310-2024-12-29">[v3.1.0] - 2024-12-29</h2>
-<h3 id="added_2">Added</h3>
+<h3 id="added_3">Added</h3>
 <ul>
 <li>CSS variable <code>--cc-dialog-margin-correction</code> introduced for dialog margin corrections.</li>
 </ul>
 <h2 id="v300-2024-12-29">[v3.0.0] - 2024-12-29</h2>
-<h3 id="added_3">Added</h3>
+<h3 id="added_4">Added</h3>
 <ul>
 <li>Python 3.13 support.</li>
 <li>Accessibility attributes added to all widgets.</li>
 <li>Added settings <code>close_button_css_classes</code> and <code>redirect_url</code>.</li>
 </ul>
-<h3 id="changed_4">Changed</h3>
+<h3 id="changed_6">Changed</h3>
 <ul>
 <li>Improved keyboard accessibility.</li>
 <li>Improved styling.</li>
 <li>README updated.</li>
 </ul>
-<h3 id="removed_2">Removed</h3>
+<h3 id="removed_3">Removed</h3>
 <ul>
 <li>Dropped support for Python 3.5</li>
 <li>Dropped support for Django 2.2, 3.0, and 3.1</li>
 </ul>
 <h2 id="v231-2024-08-09">[v2.3.1] - 2024-08-09</h2>
-<h3 id="changed_5">Changed</h3>
+<h3 id="changed_7">Changed</h3>
 <ul>
 <li>Classifiers updated at setup.py.</li>
 <li>README updated.</li>
 </ul>
 <h2 id="v230-2024-08-09">[v2.3.0] - 2024-08-09</h2>
-<h3 id="changed_6">Changed</h3>
+<h3 id="changed_8">Changed</h3>
 <ul>
 <li>Django 5.1 support.</li>
 </ul>
 <h2 id="v221-2024-07-31">[v2.2.1] - 2024-07-31</h2>
-<h3 id="fixed_5">Fixed</h3>
+<h3 id="fixed_6">Fixed</h3>
 <ul>
 <li>Required sections don't attempt to include conditional templates.</li>
 </ul>
 <h2 id="v220-2024-03-08">[v2.2.0] - 2024-03-08</h2>
-<h3 id="added_4">Added</h3>
+<h3 id="added_5">Added</h3>
 <ul>
 <li>Django 5.0 support.</li>
 <li>Python 3.9, 3.10, 3.11, 3.12 support.</li>
 </ul>
 <h2 id="v210-2023-04-07">[v2.1.0] - 2023-04-07</h2>
-<h3 id="added_5">Added</h3>
+<h3 id="added_6">Added</h3>
 <ul>
 <li>Django 4.2 support.</li>
 </ul>
 <h2 id="v201-2022-10-31">[v2.0.1] - 2022-10-31</h2>
-<h3 id="fixed_6">Fixed</h3>
+<h3 id="fixed_7">Fixed</h3>
 <ul>
 <li>Python 3.5, 3.6, 3.7, 3.8 support.</li>
 </ul>
 <h2 id="v200-2022-10-31">[v2.0.0] - 2022-10-31</h2>
-<h3 id="added_6">Added</h3>
+<h3 id="added_7">Added</h3>
 <ul>
 <li>Button text customization.</li>
 <li>Possibility to preselect a section in configuration.</li>
@@ -386,105 +429,105 @@ and this project adheres to <a href="https://semver.org/spec/v2.0.0.html">Semant
 <li>Python 3.11 support.</li>
 <li>Dialog position configurations: center, top, left, right, bottom.</li>
 </ul>
-<h3 id="changed_7">Changed</h3>
+<h3 id="changed_9">Changed</h3>
 <ul>
 <li>Dialog close button made optional and not shown by default.</li>
 </ul>
 <h2 id="v121-2022-09-14">[v1.2.1] - 2022-09-14</h2>
-<h3 id="added_7">Added</h3>
+<h3 id="added_8">Added</h3>
 <ul>
 <li>Pointer cursor for "Show cookie providers".</li>
 </ul>
-<h3 id="fixed_7">Fixed</h3>
+<h3 id="fixed_8">Fixed</h3>
 <ul>
 <li>gettext_lazy usage in the settings.</li>
 </ul>
 <h2 id="v120-2022-08-07">[v1.2.0] - 2022-08-07</h2>
-<h3 id="added_8">Added</h3>
+<h3 id="added_9">Added</h3>
 <ul>
 <li>Django 4.1 support.</li>
 </ul>
 <h2 id="v110-2021-12-17">[v1.1.0] - 2021-12-17</h2>
-<h3 id="added_9">Added</h3>
+<h3 id="added_10">Added</h3>
 <ul>
 <li>Django 4.0 support.</li>
 </ul>
 <h2 id="v100-2021-11-15">[v1.0.0] - 2021-11-15</h2>
-<h3 id="added_10">Added</h3>
+<h3 id="added_11">Added</h3>
 <ul>
 <li>Python 3.9 and 3.10 support.</li>
 </ul>
 <h2 id="v032-2021-11-14">[v0.3.2] - 2021-11-14</h2>
-<h3 id="fixed_8">Fixed</h3>
+<h3 id="fixed_9">Fixed</h3>
 <ul>
 <li>More spacious layout for the modal dialog on mobile screens.</li>
 </ul>
 <h2 id="v031-2021-11-12">[v0.3.1] - 2021-11-12</h2>
-<h3 id="fixed_9">Fixed</h3>
+<h3 id="fixed_10">Fixed</h3>
 <ul>
 <li>The styling for the modal dialog close button fixed for mobile Chrome and Safari.</li>
 </ul>
 <h2 id="v030-2021-11-12">[v0.3.0] - 2021-11-12</h2>
-<h3 id="added_11">Added</h3>
+<h3 id="added_12">Added</h3>
 <ul>
 <li>Content-Security-Policy is supported: you can use Django-CSP with nonces for inline scripts and styles.</li>
 </ul>
 <h2 id="v024-2021-11-02">[v0.2.4] - 2021-11-02</h2>
-<h3 id="added_12">Added</h3>
+<h3 id="added_13">Added</h3>
 <ul>
 <li>HTML ids added for switch widgets for easier testability.</li>
 </ul>
 <h2 id="v023-2021-11-01">[v0.2.3] - 2021-11-01</h2>
-<h3 id="fixed_10">Fixed</h3>
+<h3 id="fixed_11">Fixed</h3>
 <ul>
 <li>Modal dialog submission fix for Safari.</li>
 </ul>
 <h2 id="v022-2021-11-01">[v0.2.2] - 2021-11-01</h2>
-<h3 id="fixed_11">Fixed</h3>
+<h3 id="fixed_12">Fixed</h3>
 <ul>
 <li>Multiple <code>&lt;script&gt;</code> loading in the conditional snippets fixed.</li>
 </ul>
 <h2 id="v021-2021-10-27">[v0.2.1] - 2021-10-27</h2>
-<h3 id="changed_8">Changed</h3>
+<h3 id="changed_10">Changed</h3>
 <ul>
 <li>Modal dialog centered vertically and horizontally.</li>
 </ul>
 <h2 id="v020-2021-10-27">[v0.2.0] - 2021-10-27</h2>
-<h3 id="added_13">Added</h3>
+<h3 id="added_14">Added</h3>
 <ul>
 <li>Logging the cookie consent choices in the database because of the legal requirements.</li>
 </ul>
-<h3 id="fixed_12">Fixed</h3>
+<h3 id="fixed_13">Fixed</h3>
 <ul>
 <li>Disabling the buttons while saving the Cookie Choices so that they are not triggered more than once with slow Internet connections.</li>
 </ul>
 <h2 id="v0111-2021-10-24">[v0.1.11] - 2021-10-24</h2>
-<h3 id="fixed_13">Fixed</h3>
+<h3 id="fixed_14">Fixed</h3>
 <ul>
 <li>Styling of the switches.</li>
 </ul>
 <h2 id="v018-2021-10-24">[v0.1.8] - 2021-10-24</h2>
-<h3 id="fixed_14">Fixed</h3>
+<h3 id="fixed_15">Fixed</h3>
 <ul>
 <li>Styling for the modal dialog close button.</li>
 </ul>
 <h2 id="v016-2021-10-23">[v0.1.6] - 2021-10-23</h2>
-<h3 id="removed_3">Removed</h3>
+<h3 id="removed_4">Removed</h3>
 <ul>
 <li>Samesite functionality.</li>
 </ul>
 <h2 id="v015-2021-10-23">[v0.1.5] - 2021-10-23</h2>
-<h3 id="added_14">Added</h3>
+<h3 id="added_15">Added</h3>
 <ul>
 <li>Default extra.html template.</li>
 </ul>
 <h2 id="v014-2021-10-23">[v0.1.4] - 2021-10-23</h2>
-<h3 id="fixed_15">Fixed</h3>
+<h3 id="fixed_16">Fixed</h3>
 <ul>
 <li>bump2version configuration.</li>
 </ul>
 <h2 id="v012-2021-10-23">[v0.1.2] - 2021-10-23</h2>
-<h3 id="added_15">Added</h3>
+<h3 id="added_16">Added</h3>
 <ul>
 <li>Initial commit.</li>
 </ul>

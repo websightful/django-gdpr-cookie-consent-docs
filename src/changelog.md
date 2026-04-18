@@ -1,31 +1,63 @@
-Changelog
-=========
+# Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-[Unreleased]
-------------
+## [Unreleased]
 ...
 
-[v4.1.2] - 2025-06-29
-------------------
+## [v5.0.1] - 2026-04-18
+
+### Changed
+
+- README updated with more generic setup instructions.
+
+## [v5.0.0] - 2026-04-14
+
+### Added
+
+- If an anonymous user who made a cookie consent preference logs in, their user account gets linked to the record.
+- Django 6.0 and Python 3.14 support.
+
+### Changed
+
+- Showing the user's name in the records instead of "Anonymous" if the user logged in later.
+- No atomic transaction for records.
+- App packaging updated to the newer standard.
+
+### Removed
+
+- No more support for Python 3.8 and 3.9.
+
+### Fixed
+
+- Consent choices are now stored as JSON instead of plain text, enabling reliable database queries and removing a source of double-serialization bugs.
+- Very long `User-Agent` strings are now capped at 512 characters before being saved, preventing storage abuse from malicious bots.
+- Cookie choices HTML now renders correctly in the Django admin on Django 4+.
+- Duplicate hashing logic in the model has been consolidated into a single place, so future algorithm changes only need to be made once.
+- Being explicit about sending sessionid to the cookie management form.
+
+### Security
+
+- Verification security was upgraded to use a stronger, more cryptographically sound hashing algorithm HMAC-SHA256 instead of MD5, with all existing records migrated to the new standard.
+- `anonymize_ip` now safely returns `None` instead of raising a `TypeError` when no IP address is present in the request — preventing an unhandled 500 error that would break consent recording in proxy or test environments.
+- The `cookie_consent` cookie is now set with `secure` and `samesite` attributes, inheriting their values from `SESSION_COOKIE_SECURE` and `SESSION_COOKIE_SAMESITE` — preventing the consent cookie from being transmitted over plain HTTP or sent in cross-site requests.
+
+## [v4.1.2] - 2025-06-29
 
 ### Fixed
 
 - Sections with `preselected` set to `False` won't be marked as denied by default. Their status (granted or denied) is revealed only after saving preferences. This mainly affects custom JavaScript events.
 
-[v4.1.1] - 2025-06-24
-------------------
+## [v4.1.1] - 2025-06-24
 
 ### Fixed
 
 - Dialog close button style consistency across configurations.
 
-[v4.1.0] - 2025-06-24
-------------------
+## [v4.1.0] - 2025-06-24
 
 ### Changed
 
@@ -35,8 +67,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Scrolling within the dialog for small screens fixed.
 
-[v4.0.0] - 2025-06-22
-------------------
+## [v4.0.0] - 2025-06-22
 
 ### Added
 
@@ -55,16 +86,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The `redirect_url` setting removed. After saving the cookie management form, the consent is activated for the same page.
 
-[v3.2.1] - 2025-04-06
-------------------
+## [v3.2.1] - 2025-04-06
 
 ### Changed
 
 - The error IDs for Django system checks revisited and generalized.
 - Added tag "gdpr_cookie_consent" for Django system checks.
 
-[v3.2.0] - 2025-04-04
-------------------
+## [v3.2.0] - 2025-04-04
 
 ### Added
 
@@ -76,8 +105,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dropped support for Python 3.6 and 3.7
 - Dropped support for Django 3.2, 4.0, and 4.1
 
-[v3.1.1] - 2024-12-30
-------------------
+## [v3.1.1] - 2024-12-30
 
 ### Fixed
 
@@ -87,15 +115,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CSS file refactored and optimized.
 
-[v3.1.0] - 2024-12-29
-------------------
+## [v3.1.0] - 2024-12-29
 
 ### Added
 
 - CSS variable `--cc-dialog-margin-correction` introduced for dialog margin corrections.
 
-[v3.0.0] - 2024-12-29
-------------------
+## [v3.0.0] - 2024-12-29
 
 ### Added
 
@@ -114,52 +140,45 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Dropped support for Python 3.5
 - Dropped support for Django 2.2, 3.0, and 3.1
 
-[v2.3.1] - 2024-08-09
-------------------
+## [v2.3.1] - 2024-08-09
 
 ### Changed
 
 - Classifiers updated at setup.py.
 - README updated.
 
-[v2.3.0] - 2024-08-09
-------------------
+## [v2.3.0] - 2024-08-09
 
 ### Changed
 
 - Django 5.1 support.
 
-[v2.2.1] - 2024-07-31
-------------------
+## [v2.2.1] - 2024-07-31
 
 ### Fixed
 
 - Required sections don't attempt to include conditional templates.
 
-[v2.2.0] - 2024-03-08
-------------------
+## [v2.2.0] - 2024-03-08
 
 ### Added
 
 - Django 5.0 support.
 - Python 3.9, 3.10, 3.11, 3.12 support.
 
-[v2.1.0] - 2023-04-07
-------------------
+## [v2.1.0] - 2023-04-07
 
 ### Added
 
 - Django 4.2 support.
 
-[v2.0.1] - 2022-10-31
-------------------
+## [v2.0.1] - 2022-10-31
 
 ### Fixed
 
 - Python 3.5, 3.6, 3.7, 3.8 support.
 
-[v2.0.0] - 2022-10-31
-------------------
+## [v2.0.0] - 2022-10-31
 
 ### Added
 
@@ -173,8 +192,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Dialog close button made optional and not shown by default.
 
-[v1.2.1] - 2022-09-14
-------------------
+## [v1.2.1] - 2022-09-14
 
 ### Added
 
@@ -185,78 +203,67 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - gettext_lazy usage in the settings.
 
 
-[v1.2.0] - 2022-08-07
-------------------
+## [v1.2.0] - 2022-08-07
 
 ### Added
 
 - Django 4.1 support.
 
-[v1.1.0] - 2021-12-17
-------------------
+## [v1.1.0] - 2021-12-17
 
 ### Added
 
 - Django 4.0 support.
 
-[v1.0.0] - 2021-11-15
-------------------
+## [v1.0.0] - 2021-11-15
 
 ### Added
 
 - Python 3.9 and 3.10 support.
 
-[v0.3.2] - 2021-11-14
-------------------
+## [v0.3.2] - 2021-11-14
 
 ### Fixed
 
 - More spacious layout for the modal dialog on mobile screens.
 
-[v0.3.1] - 2021-11-12
-------------------
+## [v0.3.1] - 2021-11-12
 
 ### Fixed
 
 - The styling for the modal dialog close button fixed for mobile Chrome and Safari.
 
-[v0.3.0] - 2021-11-12
-------------------
+## [v0.3.0] - 2021-11-12
 
 ### Added
 
 - Content-Security-Policy is supported: you can use Django-CSP with nonces for inline scripts and styles.
 
-[v0.2.4] - 2021-11-02
-------------------
+## [v0.2.4] - 2021-11-02
 
 ### Added
 
 - HTML ids added for switch widgets for easier testability.
 
-[v0.2.3] - 2021-11-01
-------------------
+## [v0.2.3] - 2021-11-01
 
 ### Fixed
 
 - Modal dialog submission fix for Safari.
 
-[v0.2.2] - 2021-11-01
-------------------
+## [v0.2.2] - 2021-11-01
 
 ### Fixed
 
 - Multiple `<script>` loading in the conditional snippets fixed.
 
-[v0.2.1] - 2021-10-27
-------------------
+## [v0.2.1] - 2021-10-27
 
 ### Changed
 
 - Modal dialog centered vertically and horizontally.
 
-[v0.2.0] - 2021-10-27
-------------------
+## [v0.2.0] - 2021-10-27
 
 ### Added
 
@@ -266,43 +273,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Disabling the buttons while saving the Cookie Choices so that they are not triggered more than once with slow Internet connections.
 
-[v0.1.11] - 2021-10-24
-------------------
+## [v0.1.11] - 2021-10-24
 
 ### Fixed
 
 - Styling of the switches.
 
-[v0.1.8] - 2021-10-24
-------------------
+## [v0.1.8] - 2021-10-24
 
 ### Fixed
 
 - Styling for the modal dialog close button.
 
-[v0.1.6] - 2021-10-23
-------------------
+## [v0.1.6] - 2021-10-23
 
 ### Removed
 
 - Samesite functionality.
 
-[v0.1.5] - 2021-10-23
-------------------
+## [v0.1.5] - 2021-10-23
 
 ### Added
 
 - Default extra.html template.
 
-[v0.1.4] - 2021-10-23
-------------------
+## [v0.1.4] - 2021-10-23
 
 ### Fixed
 
 - bump2version configuration.
 
-[v0.1.2] - 2021-10-23
-------------------
+## [v0.1.2] - 2021-10-23
 
 ### Added
 

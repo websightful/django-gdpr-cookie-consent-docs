@@ -20,7 +20,7 @@ Django GDPR Cookie Consent app was created for Django developers who need to int
 | Unlimited websites                  | ✔︎                                             |
 | Continuous cookie consent logs      | ✔︎                                             |
 | Anonymized IP addresses in the logs | ✔︎                                             |
-| Latest package version              | 5.0.1                                          |
+| Latest package version              | 5.0.3                                          |
 
 ## What are the benefits?
 

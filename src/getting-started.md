@@ -11,14 +11,14 @@ Create a directory `private_wheels/` in your project's repository and add the wh
 Link to this file in your `requirements.txt`:
 
 ```
-file:./private_wheels/django_gdpr_cookie_consent-5.0.1-py2.py3-none-any.whl
+file:./private_wheels/django_gdpr_cookie_consent-5.0.3-py2.py3-none-any.whl
 ```
 
 or
 
 ```
 --find-links=./private_wheels/
-django-gdpr-cookie-consent==5.0.1
+django-gdpr-cookie-consent==5.0.3
 ```
 
 Install the pip requirements from the `requirements.txt` file into your project's virtual environment:
@@ -30,7 +30,7 @@ Install the pip requirements from the `requirements.txt` file into your project'
 Alternatively to start quickly, install the wheel file into your Django project's virtual environment right from the shell:
 
 ```shell
-(venv)$ pip install /path/to/django_gdpr_cookie_consent-5.0.1-py2.py3-none-any.whl
+(venv)$ pip install /path/to/django_gdpr_cookie_consent-5.0.3-py2.py3-none-any.whl
 ```
 
 
@@ -124,7 +124,7 @@ For testing, you can add markup like:
 
 **Manage the scripts that create your strictly necessary cookies separately, unrelated to the Django GDPR Cookie Consent app.**
 
-Note: Since version 5.0.1, using conditional templates is optional. You can instead rely on the provided context processor or special JavaScript to check which cookie categories are active and control rendering accordingly.
+Note: Since version 5.0.3, using conditional templates is optional. You can instead rely on the provided context processor or special JavaScript to check which cookie categories are active and control rendering accordingly.
 
 ### 7. Add event handlers if you need to track cookie consent changes
 

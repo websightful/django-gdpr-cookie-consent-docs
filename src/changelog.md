@@ -8,6 +8,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 ...
 
+## [v5.1.0] - 2026-08-09
+
+### Added
+
+- Django 6.1 support.
+
+## [v5.0.3] - 2026-04-19
+
+### Fixed
+
+- Missing migrations added.
+
+## [v5.0.2] - 2026-04-19
+
+### Fixed
+
+- `{% render_conditional_html %}` fails silently when called from a template context without `HttpRequest`.
+
 ## [v5.0.1] - 2026-04-18
 
 ### Changed
@@ -318,5 +336,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 ### Security
 -->
-
-
